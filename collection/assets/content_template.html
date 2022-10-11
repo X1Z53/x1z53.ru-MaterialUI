@@ -1,0 +1,105 @@
+<div class="table_wrapper">
+    <table class="container table align-middle">
+        <thead class="align-middle">
+            {% for header in headers -%}
+                {% if '.' not in header -%}
+                    <th>{{ header }}</th>
+                {% else -%}
+                    <th width="7.5%"><img class="invert" src="assets/img/{{ header }}"></th>
+                {% endif -%}
+            {% endfor -%}
+        </thead>
+        <tbody>
+            {% set groups = [] -%}
+
+            {% for title, parametrs in table.items() -%}
+                {% set keys, values, group = [], [], 0 -%}
+
+                {% if '/' in title -%}
+                    {% set title, group = title.split('/', 1)[::-1] -%}
+                {% endif -%}
+
+                {% for key, value in parametrs.items() -%}
+                    {% if parametrs[key].values() | list != [None]*5 -%}
+                        {% set keys = keys.append(key) -%}
+                    {% endif -%}
+                    
+                    {% for key in ['version', 'new_version'] -%}
+                        {% if value[key] and value[key] not in values -%}
+                            {% set values = values.append(value[key]) -%}
+                        {% endif -%}
+                    {% endfor -%}
+                {% endfor -%}
+
+                {% if group and group not in groups -%}
+                    {% set groups = groups.append(group) -%}
+
+                    <tr>
+                        <td class="button" id="{{ group }}">
+                            <img class="button" id="{{ group }}" src="assets/img/icons/{{ group }}.svg" onerror="this.src=''; this.onerror=''">
+                        </td>
+                        <td class="button" id="{{ group }}" colspan="2">{{ group }}</td>
+                        <td class="button" id="{{ group }}" colspan="2" class="icon">
+                            <img class="button invert" id="{{ group }}" src="assets/img/arrow.svg">
+                        </td>
+                    </tr>
+                {% endif -%}
+
+                <tr class="{{ group + ' hide' if group else '' }}">
+                    <!-- Icon -->
+                    <td><img src="assets/img/icons/{{ title }}.svg" class="icon {{ 'negative' if title in icons_to_negative else '' }}" onerror="this.src=`assets/img/icons/{{ group }}.svg`; this.onerror=``"></td>
+                    
+                    <!-- Title -->
+                    <td>{{ title }}</td>
+                    
+                    <!-- Downloaded and New versions -->
+                    <td>
+                        {% if values | length == 1 -%}
+                            {% if parametrs[keys[0]]['new_version'] != parametrs[keys[0]]['version'] -%}
+                                <a href="{{ parametrs[keys[0]]['download'] }}" target='_blank' title='New version'>{{ parametrs[keys[0]]['new_version'] }}</a>
+                            {% else -%}
+                                <span title="Version">{{ values[0] }}</span>
+                            {% endif -%}
+                        {% else -%}
+                            {% for key, values in parametrs.items() -%}
+                                {% if values['new_version'] -%}
+                                    <span title="{{ key }} version">{{ values['version'] if values['version'] else 0 }}</span>
+                                    
+                                    {% if values['version'] != values['new_version'] -%}
+                                        <span>(<a href="{{ values['download'] }}" target='_blank' title="{{ key }} new version">{{ values['new_version'] }}</a>)</span>
+                                    {% endif -%}
+                                    
+                                    {% if key != keys[-1] %}|{% endif %}
+                                {% endif -%}
+                            {% endfor -%}
+                        {% endif -%}
+                    </td>
+
+                    <!-- Size of versions -->
+                    <td>
+                        {% for key, values in parametrs.items() -%}
+                            {% if values['size'] -%}
+                                <span title="{{ key }}">{{ values['size'] }}</span>
+                                
+                                {% if key != keys[-1] %}|{% endif %}
+                            {% endif -%}
+                        {% endfor -%}
+                    </td>
+
+                    <!-- Download buttons -->
+                    <td>
+                        {% for key, values in parametrs.items() -%}
+                            {% if values['version'] -%}
+    			<a title="{{ key }}" href="all/{{ group + '/' if  group else '/'}}{{ title }}/{{ key.lower() }}/{{ title }} ({{ values['version'] }}).{{ values['extension'] }}">
+                                    <img class='invert icon' src="assets/img/{{ key.lower() }}.svg">
+                                </a>
+                            {% endif -%}
+                        {% endfor -%}
+                    </td>
+                </tr>
+
+                {% set group = '' -%}
+            {% endfor -%}
+        </tbody>
+    </table>
+</div>
