@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="165.69 71.745 251.919 255.584" width="251.919" height="255.584" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter id="filter21800">
+      <feGaussianBlur stdDeviation="0.42580173" id="feGaussianBlur21802"/>
+    </filter>
+    <filter id="filter10137">
+      <feGaussianBlur stdDeviation="3.1826429" id="feGaussianBlur10139"/>
+    </filter>
+    <linearGradient id="linearGradient13241" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.4156002,0,0,1.4156002,-21.560772,-74.595777)" x1="124.39233" y1="131.96484" x2="122.34922" y2="92.974464" xlink:href="#linearGradient6106"/>
+    <linearGradient id="linearGradient6106">
+      <stop style="stop-color:#000000;stop-opacity:1;" offset="0" id="stop6108"/>
+      <stop style="stop-color:#000000;stop-opacity:0;" offset="1" id="stop6110"/>
+    </linearGradient>
+    <pattern id="pattern13210" patternTransform="translate(-298.34995,240.86648)" xlink:href="#pattern8174"/>
+    <pattern patternUnits="userSpaceOnUse" width="3.2504171" height="2.7860718" patternTransform="translate(-298.34995,240.86648)" id="pattern8174">
+      <g transform="matrix(3.3167521e-2,0,0,3.3167521e-2,21.890564,-5.3731384)" id="g7182">
+        <rect style="opacity:0.98999999;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:6;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" id="rect6203" width="32" height="28" x="-658" y="162"/>
+        <rect style="opacity:0.98999999;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:6;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" id="rect7174" width="32" height="28" x="-626" y="190"/>
+        <rect style="opacity:0.98999999;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:6;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" id="rect7176" width="32" height="28" x="-594" y="162"/>
+        <rect style="opacity:0.98999999;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:6;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" id="rect7178" width="32" height="28" x="-594" y="218"/>
+        <rect style="opacity:0.98999999;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:6;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" id="rect7180" width="32" height="28" x="-660" y="218"/>
+      </g>
+    </pattern>
+    <linearGradient id="linearGradient13206" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.9253543,0,0,2.424854,-118.53124,-149.30655)" x1="127.32143" y1="16.177502" x2="127.32143" y2="119.03465" xlink:href="#linearGradient9085"/>
+    <linearGradient id="linearGradient9085">
+      <stop style="stop-color:#ffffff;stop-opacity:1;" offset="0" id="stop9087"/>
+      <stop style="stop-color:#ffffff;stop-opacity:0;" offset="1" id="stop9089"/>
+    </linearGradient>
+    <filter x="-0.032852562" width="1.0657051" y="-0.10459185" height="1.2091837" id="filter27770">
+      <feGaussianBlur stdDeviation="1.2812499" id="feGaussianBlur27772"/>
+    </filter>
+  </defs>
+  <g id="layer1" transform="matrix(1, 0, 0, 1, 164.026596, 86.195831)">
+    <g id="g13243">
+      <path transform="matrix(2.4207197,0,0,3.2758984,-109.29913,-158.53743)" d="M 149.90664 88.062141 A 51.972347 33.941124 0 1 1  45.961941,88.062141 A 51.972347 33.941124 0 1 1  149.90664 88.062141 z" id="path19860" style="opacity:0.98999999;fill:#7b7b7b;fill-opacity:1;fill-rule:nonzero;stroke:#8f8f8f;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;filter:url(#filter21800)"/>
+      <path transform="matrix(2.1041326,0,0,2.3374733,-142.61947,-185.35919)" d="M 187.85714 131.53572 A 59.642857 48.035713 0 1 1  68.571423,131.53572 A 59.642857 48.035713 0 1 1  187.85714 131.53572 z" id="path3196" style="opacity:0.98999999;fill:#3e5495;fill-opacity:1;fill-rule:nonzero;stroke:#3d5292;stroke-width:0.90182;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"/>
+      <path transform="matrix(1.9557719,0,0,1.9680241,-120.12084,-114.02305)" d="M 189.28571 116.71429 A 63.214287 53.92857 0 1 1  62.85714,116.71429 A 63.214287 53.92857 0 1 1  189.28571 116.71429 z" id="path2223" style="opacity:0.98999999;fill:#4962ae;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.03164828;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"/>
+      <g transform="matrix(1.0528491,0,0,1,-1.5787571,0)" id="g13231">
+        <text style="font-size: 17.9527px; font-style: normal; font-weight: normal; line-height: 125%; fill: rgb(255, 240, 255); fill-opacity: 1; stroke: rgb(255, 240, 255); stroke-width: 5; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; filter: url(#filter10137); font-family: &quot;Bitstream Vera Sans&quot;; white-space: pre;" x="-181.64458" y="178.59599" id="text4231" transform="matrix(1.5447551,0,0,1.2972437,338.45429,-79.326527)"><tspan id="tspan4233" x="-181.64458" y="178.59599" style="font-size:144px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#fff0ff;fill-opacity:1;stroke:#fff0ff;stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;font-family:Courier 10 Pitch">S</tspan></text>
+        <text style="font-size: 25.4139px; font-style: normal; font-weight: normal; line-height: 125%; fill: rgb(73, 98, 174); fill-opacity: 1; stroke: none; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1; font-family: &quot;Bitstream Vera Sans&quot;; white-space: pre;" x="53.020477" y="166.25648" id="text9155" transform="scale(1.0912369,0.9163913)"><tspan id="tspan9157" x="53.020477" y="166.25648" style="font-size:203.84642029px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4962ae;fill-opacity:1;stroke:none;stroke-opacity:1;font-family:Courier 10 Pitch">S</tspan></text>
+        <text style="font-size: 25.4139px; font-style: normal; font-weight: normal; line-height: 125%; fill: url(#linearGradient13241); fill-opacity: 1; stroke: none; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1; font-family: &quot;Bitstream Vera Sans&quot;; white-space: pre;" x="53.020477" y="166.25648" id="text24847" transform="scale(1.0912369,0.9163913)"><tspan id="tspan24849" x="53.020477" y="166.25648" style="font-size:203.84642029px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient13241);fill-opacity:1;stroke:none;stroke-opacity:1;font-family:Courier 10 Pitch">S</tspan></text>
+        <text style="font-size: 25.4139px; font-style: normal; font-weight: normal; line-height: 125%; fill: url(#pattern13210); fill-opacity: 1; stroke: none; stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1; font-family: &quot;Bitstream Vera Sans&quot;; white-space: pre;" x="53.020477" y="166.25648" id="text6114" transform="scale(1.0912369,0.9163913)"><tspan id="tspan6116" x="53.020477" y="166.25648" style="font-size:203.84642029px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:url(#pattern13210);fill-opacity:1;stroke:none;stroke-opacity:1;font-family:Courier 10 Pitch">S</tspan></text>
+      </g>
+      <path id="path8114" d="M 129.01431,14.890708 C 59.410838,16.077242 11.374254,61.182069 11.017594,107.72797 C 84.642076,128.44672 167.70319,129.70663 243.16031,104.26388 C 236.69233,52.476094 182.75068,13.974659 129.01431,14.890708 z " style="fill:url(#linearGradient13206);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"/>
+      <g transform="translate(-242.87573,14.875667)" id="g13227">
+        <path style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#ffffff;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter27770)" d="M 91.468907,126.96891 L 91.94701,148.53109 L 166.53109,148.53109 L 166.53109,148.53109" id="path26797" transform="matrix(1.9999989,0,0,1.9999989,115.93801,-131.93768)"/>
+        <path style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:5.87562323;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="M 297.87572,122.5 L 298.83193,165.62434 L 448.00001,165.62434 L 448.00001,165.62434" id="path26799"/>
+      </g>
+    </g>
+  </g>
+</svg>
