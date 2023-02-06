@@ -15,27 +15,13 @@ import AlbumIcon from "@mui/icons-material/Album";
 // Default variables
 const { file_storage } = require("../databases/config.json");
 
-const Installer = styled(DownloadRoundedIcon)`
-  title: "Installer";
-`;
-const Portable = styled(FolderIcon)`
-  title: "Portable";
-`;
-const Universal = styled(DownloadingIcon)`
-  title: "Universal";
-`;
-const Netinstaller = styled(CloudDownloadIcon)`
-  title: "Netinstaller";
-`;
-const Minimal = styled(InsertDriveFileRoundedIcon)`
-  title: "Minimal";
-`;
-const Full = styled(AlbumIcon)`
-  title: "Full";
-`;
-const Live = styled(SaveIcon)`
-  title: "Live";
-`;
+const Installer = styled(DownloadRoundedIcon)`title: "Installer";`;
+const Portable = styled(FolderIcon)`title: "Portable";`;
+const Universal = styled(DownloadingIcon)`title: "Universal";`;
+const Netinstaller = styled(CloudDownloadIcon)`title: "Netinstaller";`;
+const Minimal = styled(InsertDriveFileRoundedIcon)`title: "Minimal";`;
+const Full = styled(AlbumIcon)`title: "Full";`;
+const Live = styled(SaveIcon)`title: "Live";`;
 
 const iconsStyles = { height: "40px", width: "auto" };
 const icons = {
@@ -57,43 +43,18 @@ const headers = [
   <LinkIcon sx={iconsStyles} />
 ];
 const collection = Object.keys(database).map((name) =>
-  database[name]["type"] !== "Folder"
-    ? [
-        <img
-          style={iconsStyles}
-          src={file_storage + "collection/" + name + ".svg"}
-          alt={name}
-        />,
-
-        name,
-        database[name]["version"],
-        database[name]["type"],
-        <Link
-          title={database[name]["type"]}
-          href={file_storage + "collection/" + database[name]["file"]}
-        >
-          <IconButton>{icons[database[name]["type"]]}</IconButton>
-        </Link>
-      ]
-    : [
-        <img
-          style={iconsStyles}
-          src={file_storage + "collection/" + name + ".svg"}
-          alt={name}
-        />,
-        name
-      ].map(function (item) {
-        let items = [];
-        if (typeof item === "string") {
-          item = item.split("|");
-          for (const value in item) {
-            items.push(item[value], <br />);
-          }
-        } else {
-          items = item;
-        }
-        return items;
-      })
+  database[name]["type"] !== "Folder" ? [
+    <img style={iconsStyles} src={file_storage + "collection/" + name + ".svg"} alt={name} />,
+    name,
+    database[name]["version"],
+    database[name]["type"],
+    <Link title={database[name]["type"]} href={file_storage + "collection/" + database[name]["file"]}>
+      <IconButton>{icons[database[name]["type"]]}</IconButton>
+    </Link>
+  ] : [
+    <img style={iconsStyles} src={file_storage + "collection/" + name + ".svg"} alt={name} />,
+    name
+  ]
 );
 
 export default function Collection() {

@@ -22,7 +22,7 @@ export default function Main() {
                 <Typography gutterBottom variant="h4" component="div">
                   {formatString(section, database[section]["charsToUpCase"])}
                 </Typography>
-                {parse(database[section]["description"].replace("|", "<br>"))}
+                {parse(database[section]["description"].replaceAll("|", "<br>"))}
               </CardContent>
             </CardActionArea>
           </Card>

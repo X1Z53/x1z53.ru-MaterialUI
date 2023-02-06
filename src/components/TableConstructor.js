@@ -11,6 +11,7 @@ import {
   Typography
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import parse from "html-react-parser";
 
 // Arrows icons
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
@@ -22,9 +23,14 @@ const StyledTableCell = styled(TableCell)`
 `;
 
 function Row(props) {
-  const { row, headersCount, withIcons, rowIndex } = props;
-  let { backgroundColors } = props;
+  let { row, headersCount, backgroundColors, withIcons, rowIndex } = props;
   backgroundColors = backgroundColors === undefined ? [] : backgroundColors;
+  row = row.map((item) => {
+    if (typeof item === "string") {
+      item = parse(item.replaceAll('|', '<br />'))
+    }
+    return item;
+  })
   const isFolder = row.length < headersCount - 1;
   const [open, setOpen] = useState(false);
 
@@ -64,9 +70,9 @@ function Row(props) {
 }
 
 export default function TableConstructor(props) {
-  const { headers, rows, backgroundColors } = props;
+  let { headers, rows, backgroundColors } = props;
   if (!rows) {
-    const rows = [];
+    let rows = [];
   }
   const withIcons = headers.indexOf("Icon") !== -1;
 
