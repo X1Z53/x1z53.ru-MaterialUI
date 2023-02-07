@@ -29,13 +29,7 @@ const darkTheme = createTheme({
 
 createRoot(document.getElementById("root")).render(
   <ThemeProvider theme={darkTheme}>
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh"
-      }}
-    >
+    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <CssBaseline />
       <Header />
       <Container component="main">
@@ -47,10 +41,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="/trum_blacklist" element={<TrumBlacklist />} />
             <Route path="/trum_account_form" element={<TrumAccountForm />} />
             <Route path="/trum_admins" element={<TrumAdmins />} />
-            <Route
-              path="/import_substitution"
-              element={<ImportSubstitution />}
-            />
+            <Route path="/import_substitution" element={<ImportSubstitution />} />
           </Routes>
         </Router>
       </Container>

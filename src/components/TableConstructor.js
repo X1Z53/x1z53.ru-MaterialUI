@@ -36,29 +36,20 @@ function Row(props) {
 
   return (
     <>
-      <TableRow
-        sx={(theme) => ({ backgroundColor: backgroundColors[rowIndex] })}
-      >
+      <TableRow sx={(theme) => ({ backgroundColor: backgroundColors[rowIndex] })}>
         {!isFolder ? (
-          row.map((item) => (
-            <StyledTableCell align="center">{item}</StyledTableCell>
-          ))
+          row.map((item) => (<StyledTableCell align="center">{item}</StyledTableCell>))
         ) : (
           <StyledTableCell colSpan={headersCount - 2}>{row[0]}</StyledTableCell>
         )}
       </TableRow>
-      {!isFolder ? (
-        <></>
-      ) : (
+      {!isFolder ? (<></>) : (
         <TableRow>
-          <StyledTableCell
-            sx={{ height: 0, paddingBottom: 0, paddingTop: 0, border: 0 }}
-            colSpan={headersCount}
-          >
+          <StyledTableCell sx={{ height: 0, paddingBottom: 0, paddingTop: 0, border: 0 }} colSpan={headersCount}>
             <Collapse in={open} unmountOnExit>
               <Table>
                 {row[1].map((item) => (
-                  <Row row={item} headersCount={headersCount} />
+                  <R  ow row={item} headersCount={headersCount} />
                 ))}
               </Table>
             </Collapse>
@@ -71,16 +62,13 @@ function Row(props) {
 
 export default function TableConstructor(props) {
   let { headers, rows, backgroundColors } = props;
-  if (!rows) {
-    let rows = [];
-  }
   const withIcons = headers.indexOf("Icon") !== -1;
 
   return (
     <TableContainer>
-      <Table sx={{ minWidth: "1000px" }}>
-        <TableHead key="tableHead">
-          <TableRow key="header">
+      <Table>
+        <TableHead>
+          <TableRow>
             {headers.map((title) => (
               <StyledTableCell>
                 <Typography variant="h6">{title}</Typography>
