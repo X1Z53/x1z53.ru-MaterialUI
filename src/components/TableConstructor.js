@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"
 import {
   Collapse,
   IconButton,
@@ -9,34 +9,30 @@ import {
   TableHead,
   TableRow,
   Typography
-} from "@mui/material";
-import { styled } from "@mui/material/styles";
-import parse from "html-react-parser";
-
-// Arrows icons
-import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
-import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded";
+} from "@mui/material"
+import { styled } from "@mui/material/styles"
+import parse from "html-react-parser"
 
 const StyledTableCell = styled(TableCell)`
-  text-align: center;
-  padding: 5px;
-`;
+  text-align: center
+  padding: 5px
+`
 
 function Row(props) {
-  let { row, headersCount, backgroundColors, withIcons, rowIndex } = props;
-  backgroundColors = backgroundColors === undefined ? [] : backgroundColors;
+  let { row, headersCount, backgroundColors, withIcons, rowIndex } = props
+  backgroundColors = backgroundColors === undefined ? [] : backgroundColors
   row = row.map((item) => {
     if (typeof item === "string") {
       item = parse(item.replaceAll('|', '<br />'))
     }
-    return item;
+    return item
   })
-  const isFolder = row.length < headersCount - 1;
-  const [open, setOpen] = useState(false);
+  const isFolder = row.length < headersCount - 1
+  const [open, setOpen] = useState(false)
 
   return (
     <>
-      <TableRow sx={(theme) => ({ backgroundColor: backgroundColors[rowIndex] })}>
+      <TableRow sx={{ backgroundColor: backgroundColors[rowIndex] }}>
         {!isFolder ? (
           row.map((item) => (<StyledTableCell align="center">{item}</StyledTableCell>))
         ) : (
@@ -49,7 +45,7 @@ function Row(props) {
             <Collapse in={open} unmountOnExit>
               <Table>
                 {row[1].map((item) => (
-                  <R  ow row={item} headersCount={headersCount} />
+                  <Row row={item} headersCount={headersCount} />
                 ))}
               </Table>
             </Collapse>
@@ -57,12 +53,12 @@ function Row(props) {
         </TableRow>
       )}
     </>
-  );
+  )
 }
 
 export default function TableConstructor(props) {
-  let { headers, rows, backgroundColors } = props;
-  const withIcons = headers.indexOf("Icon") !== -1;
+  let { headers, rows, backgroundColors } = props
+  const withIcons = headers.indexOf("Icon") !== -1
 
   return (
     <TableContainer>
@@ -89,5 +85,5 @@ export default function TableConstructor(props) {
         </TableBody>
       </Table>
     </TableContainer>
-  );
+  )
 }

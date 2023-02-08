@@ -4,13 +4,13 @@ import {
   Typography,
   CardActionArea,
   Grid
-} from "@mui/material";
-import { formatString } from "../functions";
+} from "@mui/material"
+import { formatString } from "../functions"
 
-import parse from "html-react-parser";
+import parse from "html-react-parser"
 
-const database = require("../databases/sections.json");
-const sections = Object.keys(database);
+const database = require("../databases/sections.json")
+const sections = Object.keys(database)
 export default function Main() {
   return (
     <Grid sx={{ flexGrow: 1 }} justifyContent="center" container spacing={5}>
@@ -29,5 +29,5 @@ export default function Main() {
         </Grid>
       ))}
     </Grid>
-  );
+  )
 }

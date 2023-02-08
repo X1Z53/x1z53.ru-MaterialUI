@@ -1,21 +1,21 @@
-import { Box, Typography, Button, Collapse, TextField } from "@mui/material";
-import RegulationAndRules from "../components/RegulationAndRules";
-import emailjs from "emailjs-com";
-import { useState } from "react";
+import { Box, Typography, Button, Collapse, TextField } from "@mui/material"
+import RegulationAndRules from "../components/RegulationAndRules"
+import emailjs from "emailjs-com"
+import { useState } from "react"
 
 export default function TrumAccountForm() {
-  const [open, setOpen] = useState(false);
-  const [checked, setChecked] = useState(false);
+  const [open, setOpen] = useState(false)
+  const [checked, setChecked] = useState(false)
 
   function sendEmail(e) {
-    e.preventDefault();
+    e.preventDefault()
 
     emailjs.sendForm(
       "service_zoczq0p", "template_h4facrt", e.target, "EnOTiDgiLagu5ULuS"
     ).then(
-      (result) => { window.location.reload(); },
-      (error) => { console.log(error.text); }
-    );
+      (result) => { window.location.reload() },
+      (error) => { console.log(error.text) }
+    )
   }
 
   return (
@@ -37,10 +37,12 @@ export default function TrumAccountForm() {
         <Collapse in={checked}>
           <Typography variant="h6">При первом входе, вы должны установить желаемый пароль</Typography>
           <br />
-          <Typography variant="h6">Ни администраторы ТРЮМа, ни системные администраторы не будут знать данные от вашего аккаута</Typography>
+          <Typography variant="h6">
+            Ни администраторы ТРЮМа, ни системные администраторы не будут знать данные от вашего аккаута
+          </Typography>
           <Button type="submit">Я хочу создать свой аккаунт</Button>
         </Collapse>
       </form>
     </Box>
-  );
+  )
 }

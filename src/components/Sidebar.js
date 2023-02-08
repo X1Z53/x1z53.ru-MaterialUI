@@ -1,8 +1,8 @@
-import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
-import { formatString } from "../functions";
+import { List, ListItem, ListItemButton, ListItemText } from "@mui/material"
+import { formatString } from "../functions"
 
-const database = require("../databases/sections.json");
-const sections = Object.keys(database);
+const database = require("../databases/sections.json")
+const sections = Object.keys(database)
 
 export default function Sidebar() {
   return (
@@ -14,10 +14,7 @@ export default function Sidebar() {
       </ListItem>
       {sections.map((section) => (
         <ListItem key={section} disablePadding>
-          <ListItemButton
-            title={database[section]["description"]}
-            href={"/" + section}
-          >
+          <ListItemButton title={database[section]["description"]} href={"/" + section}>
             <ListItemText>
               {formatString(section, database[section]["charsToUpCase"])}
             </ListItemText>
@@ -25,5 +22,5 @@ export default function Sidebar() {
         </ListItem>
       ))}
     </List>
-  );
+  )
 }
