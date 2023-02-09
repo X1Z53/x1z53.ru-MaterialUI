@@ -1,6 +1,6 @@
 import { Box, Typography, Button, Collapse, TextField } from "@mui/material"
 import RegulationAndRules from "../components/RegulationAndRules"
-import emailjs from "emailjs-com"
+import emailjs from "@emailjs/browser"
 import { useState } from "react"
 
 export default function TrumAccountForm() {

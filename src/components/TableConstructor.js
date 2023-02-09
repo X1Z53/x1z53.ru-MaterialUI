@@ -66,7 +66,7 @@ export default function TableConstructor(props) {
         <TableHead>
           <TableRow>
             {headers.map((title) => (
-              <StyledTableCell>
+              <StyledTableCell align="center">
                 <Typography variant="h6">{title}</Typography>
               </StyledTableCell>
             ))}

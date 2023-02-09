@@ -41,6 +41,4 @@ const collection = Object.keys(database).map((name) =>
   ]
 )
 
-export default function Collection() {
-  return <TableConstructor headers={headers} rows={collection} />
-}
+export default function Collection() {return <TableConstructor headers={headers} rows={collection} />}

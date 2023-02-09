@@ -14,6 +14,7 @@ import TrumBlacklist from "./pages/TrumBlacklist"
 import TrumAccountForm from "./pages/TrumAccountForm"
 import TrumAdmins from "./pages/TrumAdmins"
 import ImportSubstitution from "./pages/ImportSubstitution"
+import Testing from "./pages/Testing"
 
 // Plug
 import NotNow from "./components/NotNow"
@@ -43,6 +44,7 @@ createRoot(document.getElementById("root")).render(
             <Route path="/trum_account_form" element={<TrumAccountForm />} />
             <Route path="/trum_admins" element={<TrumAdmins />} />
             <Route path="/import_substitution" element={<ImportSubstitution />} />
+            <Route path="/testing" element={<Testing />} />
           </Routes>
         </Router>
       </Container>
