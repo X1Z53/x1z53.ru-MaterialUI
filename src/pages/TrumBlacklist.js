@@ -1,3 +1,4 @@
+import React from "react"
 import TableConstructor from "../components/TableConstructor"
 
 const { file_storage } = require("../databases/config.json")

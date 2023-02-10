@@ -1,7 +1,7 @@
+import React, { useState } from "react"
 import { Box, Typography, Button, Collapse, TextField } from "@mui/material"
 import RegulationAndRules from "../components/RegulationAndRules"
 import emailjs from "@emailjs/browser"
-import { useState } from "react"
 
 export default function TrumAccountForm() {
   const [open, setOpen] = useState(false)
@@ -19,7 +19,7 @@ export default function TrumAccountForm() {
   }
 
   return (
-    <Box textAlign="center">
+    <Box>
       <form onSubmit={sendEmail}>
         <TextField label="Имя" name="name" margin="normal" required />
         <TextField label="Фамилия" name="last_name" margin="normal" required />

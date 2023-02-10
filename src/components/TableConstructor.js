@@ -1,7 +1,6 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import {
   Collapse,
-  IconButton,
   Table,
   TableBody,
   TableCell,
@@ -66,7 +65,7 @@ export default function TableConstructor(props) {
         <TableHead>
           <TableRow>
             {headers.map((title) => (
-              <StyledTableCell align="center">
+              <StyledTableCell>
                 <Typography variant="h6">{title}</Typography>
               </StyledTableCell>
             ))}

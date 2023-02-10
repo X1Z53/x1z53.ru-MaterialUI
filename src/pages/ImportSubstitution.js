@@ -1,3 +1,4 @@
+import React from "react"
 import TableConstructor from "../components/TableConstructor"
 
 const database = require("../databases/pages/import_substitution.json")

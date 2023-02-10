@@ -1,3 +1,4 @@
+import React from "react"
 import { AppBar, IconButton, Toolbar, Typography, Drawer, Box } from "@mui/material"
 import { useState } from "react"
 import { formatString } from "../functions"
@@ -44,7 +45,7 @@ export default function Header() {
             sx={{ color: "text.primary" }}
           />
         </IconButton>
-        <Typography variant="h4" sx={{ flexGrow: 1, textAlign: "center" }}>
+        <Typography variant="h4" sx={{ flexGrow: 1 }}>
           {pageName}
         </Typography>
       </Toolbar>
