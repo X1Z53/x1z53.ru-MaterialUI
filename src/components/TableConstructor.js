@@ -1,6 +1,5 @@
-import React, { useState } from "react"
+import React from "react"
 import {
-  Collapse,
   Table,
   TableBody,
   TableCell,
@@ -17,48 +16,7 @@ const StyledTableCell = styled(TableCell)`
   padding: 5px
 `
 
-function Row(props) {
-  let { row, headersCount, backgroundColors, withIcons, rowIndex } = props
-  backgroundColors = backgroundColors === undefined ? [] : backgroundColors
-  row = row.map((item) => {
-    if (typeof item === "string") {
-      item = parse(item.replaceAll('|', '<br />'))
-    }
-    return item
-  })
-  const isFolder = row.length < headersCount - 1
-  const [open, setOpen] = useState(false)
-
-  return (
-    <>
-      <TableRow sx={{ backgroundColor: backgroundColors[rowIndex] }}>
-        {!isFolder ? (
-          row.map((item) => (<StyledTableCell align="center">{item}</StyledTableCell>))
-        ) : (
-          <StyledTableCell colSpan={headersCount - 2}>{row[0]}</StyledTableCell>
-        )}
-      </TableRow>
-      {!isFolder ? (<></>) : (
-        <TableRow>
-          <StyledTableCell sx={{ height: 0, paddingBottom: 0, paddingTop: 0, border: 0 }} colSpan={headersCount}>
-            <Collapse in={open} unmountOnExit>
-              <Table>
-                {row[1].map((item) => (
-                  <Row row={item} headersCount={headersCount} />
-                ))}
-              </Table>
-            </Collapse>
-          </StyledTableCell>
-        </TableRow>
-      )}
-    </>
-  )
-}
-
-export default function TableConstructor(props) {
-  let { headers, rows, backgroundColors } = props
-  const withIcons = headers.indexOf("Icon") !== -1
-
+export default function TableConstructor({ headers, rows, backgroundColors=[] }) {
   return (
     <TableContainer>
       <Table>
@@ -73,13 +31,14 @@ export default function TableConstructor(props) {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <Row
-              row={row}
-              headersCount={headers.length}
-              withIcons={withIcons}
-              backgroundColors={backgroundColors}
-              rowIndex={rows.indexOf(row)}
-            />
+            <TableRow sx={{ backgroundColor: backgroundColors[rows.indexOf(row)] }}>
+              {row.map(
+                item => (typeof item === "string") ?
+                  parse(item.replaceAll('|', '<br />')) :
+                  item
+              ).map(item => <StyledTableCell align="center">{item}</StyledTableCell>)
+              }
+            </TableRow>
           ))}
         </TableBody>
       </Table>

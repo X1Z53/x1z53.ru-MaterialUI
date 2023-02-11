@@ -1,7 +1,7 @@
 import React from "react"
 import { AppBar, IconButton, Toolbar, Typography, Drawer, Box } from "@mui/material"
 import { useState } from "react"
-import { formatString } from "../functions"
+import { formatString } from "../backend/functions"
 
 // Icons
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded"

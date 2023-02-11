@@ -26,19 +26,20 @@ const icons = {
   Live: <SaveIcon />
 }
 
-const database = require("../databases/pages/collection.json")
-const headers = ["Icon", "Title", "Version", "Size", <LinkIcon sx={iconsStyles} />]
-const collection = Object.keys(database).map((name) =>
-  database[name]["type"] !== "Folder" ? [
-    <img style={iconsStyles} src={file_storage + "collection/" + name + ".svg"} alt={name} />,
-    name, database[name]["version"], database[name]["type"],
-    <Link title={database[name]["type"]} sx={iconsStyles} href={file_storage + "collection/" + database[name]["file"]}>
-      <IconButton>{icons[database[name]["type"]]}</IconButton>
-    </Link>
-  ] : [
-    <img style={iconsStyles} src={file_storage + "collection/" + name + ".svg"} alt={name} />,
-    name
-  ]
-)
+function formatCollection(database) {
+  return Object.keys(database).map((name) => (
+    [
+      <img style={iconsStyles} src={file_storage + "collection/" + name + ".svg"} alt={name} />,
+      name, database[name]["version"], database[name]["type"],
+      <Link title={database[name]["type"]} sx={iconsStyles} href={file_storage + "collection/" + database[name]["file"]}>
+        <IconButton>{icons[database[name]["type"]]}</IconButton>
+      </Link>
+    ]
+  ))
+}
 
-export default function Collection() {return <TableConstructor headers={headers} rows={collection} />}
+const headers = ["Icon", "Title", "Version", "Size", <LinkIcon sx={iconsStyles} />]
+const database = require("../databases/pages/collection.json")
+const collection = formatCollection(database)
+
+export default function Collection() { return <TableConstructor headers={headers} rows={collection} /> }

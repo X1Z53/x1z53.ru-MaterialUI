@@ -1,6 +1,6 @@
 import React from "react"
 import { List, ListItem, ListItemButton, ListItemText } from "@mui/material"
-import { formatString } from "../functions"
+import { formatString } from "../backend/functions"
 
 const database = require("../databases/sections.json")
 const sections = Object.keys(database)
