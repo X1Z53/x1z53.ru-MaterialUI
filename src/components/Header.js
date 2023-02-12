@@ -16,7 +16,7 @@ const pageName = urlElement
   ? formatString(
     urlElement,
     sections[urlElement] ? sections[urlElement]["charsToUpCase"] : null
-  ) : "Main Page"
+  ) : "Main"
 
 // Sidebar
 function drawSidebar(sidebarStatus, changeSidebarStatus) {

@@ -32,9 +32,9 @@ const darkTheme = createTheme({
 createRoot(document.getElementById("root")).render(
   <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
     <ThemeProvider theme={darkTheme}>
-      <Header />
-      <Container component="main">
-        <Router>
+      <Router>
+        <Header />
+        <Container component="main">
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/*" element={<NotNow />} />
@@ -45,9 +45,9 @@ createRoot(document.getElementById("root")).render(
             <Route path="/import_substitution" element={<ImportSubstitution />} />
             <Route path="/snake_game" element={<SnakeGame />} />
           </Routes>
-        </Router>
-      </Container>
-      <Footer />
+        </Container>
+        <Footer />
+      </Router>
     </ThemeProvider>
   </Box>
 )
