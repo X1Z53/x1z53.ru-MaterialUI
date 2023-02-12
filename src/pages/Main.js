@@ -1,8 +1,8 @@
 import React from "react"
-import { Card, CardContent, Typography, CardActionArea, Grid, CardActions } from "@mui/material"
+import { Card, CardContent, Typography, CardActionArea, Grid } from "@mui/material"
 import parse from "html-react-parser"
 import { formatString } from "../backend/functions"
-import { Link, NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 const database = require("../databases/sections.json")
 
