@@ -29,25 +29,29 @@ const darkTheme = createTheme({
   }
 })
 
-createRoot(document.getElementById("root")).render(
-  <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-    <ThemeProvider theme={darkTheme}>
-      <Router>
-        <Header />
-        <Container component="main">
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/*" element={<NotNow />} />
-            <Route path="/collection" element={<Collection />} />
-            <Route path="/trum_blacklist" element={<TrumBlacklist />} />
-            <Route path="/trum_account_form" element={<TrumAccountForm />} />
-            <Route path="/trum_admins" element={<TrumAdmins />} />
-            <Route path="/import_substitution" element={<ImportSubstitution />} />
-            <Route path="/snake_game" element={<SnakeGame />} />
-          </Routes>
-        </Container>
-        <Footer />
-      </Router>
-    </ThemeProvider>
-  </Box>
-)
+const App = () => {
+  return (
+    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <ThemeProvider theme={darkTheme}>
+        <Router>
+          <Header />
+          <Container component="main">
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/*" element={<NotNow />} />
+              <Route path="/collection" element={<Collection />} />
+              <Route path="/trum_blacklist" element={<TrumBlacklist />} />
+              <Route path="/trum_account_form" element={<TrumAccountForm />} />
+              <Route path="/trum_admins" element={<TrumAdmins />} />
+              <Route path="/import_substitution" element={<ImportSubstitution />} />
+              <Route path="/snake_game" element={<SnakeGame />} />
+            </Routes>
+          </Container>
+          <Footer />
+        </Router>
+      </ThemeProvider>
+    </Box>
+  )
+}
+
+createRoot(document.getElementById("root")).render(<App />)

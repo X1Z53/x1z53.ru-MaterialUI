@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   Table,
   TableBody,
@@ -6,42 +6,41 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography
-} from "@mui/material"
-import { styled } from "@mui/material/styles"
-import parse from "html-react-parser"
+  Typography,
+  styled
+} from "@mui/material";
+import parse from "html-react-parser";
 
-const StyledTableCell = styled(TableCell)`
-  text-align: center
-  padding: 5px
-`
+const StyledTableCell = styled(TableCell)({
+  textAlign: "center",
+  padding: "5px",
+});
 
-export default function TableConstructor({ headers, rows, backgroundColors=[] }) {
-  return (
-    <TableContainer>
-      <Table>
-        <TableHead>
-          <TableRow>
-            {headers.map((title) => (
-              <StyledTableCell>
-                <Typography variant="h6">{title}</Typography>
+const TableConstructor = ({ headers, rows, backgroundColors = [] }) => (
+  <TableContainer>
+    <Table>
+      <TableHead>
+        <TableRow>
+          {headers.map((title) => (
+            <StyledTableCell key={title}>
+              <Typography variant="h6">{title}</Typography>
+            </StyledTableCell>
+          ))}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows.map((row, index) => (
+          <TableRow key={index} sx={{ backgroundColor: backgroundColors[index] || "" }}>
+            {row.map((item, itemIndex) => (
+              <StyledTableCell align="center" key={itemIndex}>
+                {typeof item === "string" ? parse(item.replace(/\|/g, "<br />")) : item}
               </StyledTableCell>
             ))}
           </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow sx={{ backgroundColor: backgroundColors[rows.indexOf(row)] }}>
-              {row.map(
-                item => (typeof item === "string") ?
-                  parse(item.replaceAll('|', '<br />')) :
-                  item
-              ).map(item => <StyledTableCell align="center">{item}</StyledTableCell>)
-              }
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  )
-}
+        ))}
+      </TableBody>
+    </Table>
+  </TableContainer>
+);
+
+export default TableConstructor;

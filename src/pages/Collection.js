@@ -38,7 +38,7 @@ function formatCollection(database) {
   ))
 }
 
-const headers = ["Icon", "Title", "Version", "Size", <LinkIcon sx={iconsStyles} />]
+const headers = ["Icon", "Title", "Version", "Type", <LinkIcon sx={iconsStyles} />]
 const database = require("../databases/pages/collection.json")
 const collection = formatCollection(database)
 

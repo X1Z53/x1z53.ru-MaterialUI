@@ -12,7 +12,7 @@ export default function Sidebar() {
       {sections.map((section) => (
         <Link to={"/" + (section === "main" ? "" : section)} style={{ textDecoration: 'none' }}>
           <ListItem key={section} disablePadding>
-            <ListItemButton title={database[section]["description"]}>
+            <ListItemButton title={database[section]["description"]} style={{ padding: "3px 10px" }}>
               <ListItemText>
                 {formatString(section, database[section]["charsToUpCase"])}
               </ListItemText>
