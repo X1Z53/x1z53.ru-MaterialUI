@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Table,
   TableBody,
@@ -7,40 +7,68 @@ import {
   TableHead,
   TableRow,
   Typography,
-  styled
+  // Collapse,
+  Paper
 } from "@mui/material";
 import parse from "html-react-parser";
 
-const StyledTableCell = styled(TableCell)({
-  textAlign: "center",
-  padding: "5px",
-});
+const StyledTableRow = ({ row, rowId, backgroundColor }) => {
+  // const [isOpen, setIsOpen] = useState(false);
+  // const collapsibleContent = row[row.length - 1];
+
+  return (
+    <>
+      <TableRow key={rowId} sx={{ backgroundColor: backgroundColor || "" }} /*onClick={() => setIsOpen(!isOpen)}*/>
+        {row/*.slice(0, -1)*/.map((item, itemIndex) => (
+          <TableCell align="center" key={itemIndex}>
+            {typeof item === "string" ? parse(item.replace(/\|/g, "<br />")) : item}
+          </TableCell>
+        ))}
+        {/* <TableCell align="center">
+          {collapsibleContent && (
+            <Typography variant="body2" color="primary" sx={{ cursor: "pointer" }}>
+              {isOpen ? "Hide Details" : "Show Details"}
+            </Typography>
+          )}
+        </TableCell> */}
+      </TableRow>
+      {/* {collapsibleContent && (
+        <TableRow>
+          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={row.length}>
+            <Collapse in={isOpen} timeout="auto" unmountOnExit>
+              <Typography variant="body2">{collapsibleContent}</Typography>
+            </Collapse>
+          </TableCell>
+        </TableRow>
+      )} */}
+    </>
+  );
+};
 
 const TableConstructor = ({ headers, rows, backgroundColors = [] }) => (
-  <TableContainer>
-    <Table>
+  <TableContainer component={Paper}>
+    <Table size="small">
       <TableHead>
         <TableRow>
           {headers.map((title) => (
-            <StyledTableCell key={title}>
+            <TableCell key={title}>
               <Typography variant="h6">{title}</Typography>
-            </StyledTableCell>
+            </TableCell>
           ))}
         </TableRow>
       </TableHead>
       <TableBody>
         {rows.map((row, index) => (
-          <TableRow key={index} sx={{ backgroundColor: backgroundColors[index] || "" }}>
-            {row.map((item, itemIndex) => (
-              <StyledTableCell align="center" key={itemIndex}>
-                {typeof item === "string" ? parse(item.replace(/\|/g, "<br />")) : item}
-              </StyledTableCell>
-            ))}
-          </TableRow>
+          <StyledTableRow
+            row={row}
+            key={index}
+            backgroundColor={backgroundColors[index]}
+          />
         ))}
       </TableBody>
     </Table>
   </TableContainer>
 );
+
 
 export default TableConstructor;

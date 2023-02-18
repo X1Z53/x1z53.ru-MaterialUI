@@ -3,7 +3,6 @@ import { Card, CardContent, Typography, CardActionArea, Grid } from "@mui/materi
 import parse from "html-react-parser";
 import { formatString } from "../backend/functions";
 import { NavLink } from "react-router-dom";
-
 const database = require("../databases/sections.json");
 
 const SectionCard = ({ section, charsToUpCase, description }) => (
@@ -15,7 +14,9 @@ const SectionCard = ({ section, charsToUpCase, description }) => (
             <Typography gutterBottom variant="h4">
               {formatString(section, charsToUpCase)}
             </Typography>
-            {parse(description.replaceAll("|", "<br>"))}
+            <Typography variant="body1">
+              {parse(description.replaceAll("|", "<br>"))}
+            </Typography>
           </CardContent>
         </NavLink>
       </CardActionArea>

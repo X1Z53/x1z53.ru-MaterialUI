@@ -1,56 +1,47 @@
-import React from "react"
-import { AppBar, IconButton, Toolbar, Typography, Drawer, Box } from "@mui/material"
-import { useState } from "react"
-import { formatString } from "../backend/functions"
-
-// Icons
+import React, { useState } from "react"
+import {
+  AppBar,
+  Box,
+  Drawer,
+  IconButton,
+  Toolbar,
+} from "@mui/material"
+import { NavLink } from "react-router-dom";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded"
-
-// Components
 import Sidebar from "./Sidebar"
+const { file_storage } = require("../databases/config.json")
 
-const sections = require("../databases/sections.json")
+const Header = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-const urlElement = document.URL.split("/").at(-1)
-const pageName = urlElement
-  ? formatString(
-    urlElement,
-    sections[urlElement] ? sections[urlElement]["charsToUpCase"] : null
-  ) : "Main"
+  const handleSidebarOpen = () => {
+    setIsSidebarOpen(true);
+  };
 
-// Sidebar
-function drawSidebar(sidebarStatus, changeSidebarStatus) {
-  return (
-    <Drawer open={sidebarStatus["open"]} onClose={changeSidebarStatus(false)}>
-      <Box onClick={changeSidebarStatus(false)} onKeyDown={changeSidebarStatus(false)}>
-        <Sidebar />
-      </Box>
-    </Drawer>
-  )
-}
-
-export default function Header() {
-  const [sidebarStatus, setSidebarStatus] = useState({ open: false })
-
-  const changeSidebarStatus = (isOpen) => (event) => {
-    if (event.type !== "keydown") { setSidebarStatus({ open: isOpen }) }
-  }
+  const handleSidebarClose = () => {
+    setIsSidebarOpen(false);
+  };
 
   return (
-    <AppBar sx={{ marginBottom: "20px" }} position="sticky">
-      <Toolbar>
-        <IconButton onClick={changeSidebarStatus(true)} sx={{ position: "absolute" }}>
-          <MenuRoundedIcon
-            edge="start"
-            sx={{ color: "text.primary" }}
-          />
+    <AppBar position="sticky">
+      <Toolbar sx={{
+        background: "linear-gradient(95.53deg, rgb(0, 56, 65) 30%, rgb(0, 47, 85) 86%)"
+      }}>
+        <IconButton
+          onClick={handleSidebarOpen}
+          sx={{ position: "absolute" }}
+        >
+          <MenuRoundedIcon fontSize="large" sx={{ fill: "black" }} edge="start" />
         </IconButton>
-        <Typography variant="h4" sx={{ flexGrow: 1 }}>
-          {pageName}
-        </Typography>
+        <div style={{ flexGrow: 1 }}><NavLink to="/" width="auto"><img height="50px" src={file_storage + "logo.svg"} /></NavLink></div>
       </Toolbar>
-
-      {drawSidebar(sidebarStatus, changeSidebarStatus)}
+      <Drawer open={isSidebarOpen} onClose={handleSidebarClose}>
+        <Box onClick={handleSidebarClose} onKeyDown={handleSidebarClose}>
+          <Sidebar />
+        </Box>
+      </Drawer>
     </AppBar>
-  )
-}
+  );
+};
+
+export default Header;

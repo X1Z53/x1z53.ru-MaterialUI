@@ -1,15 +1,19 @@
 import React from 'react'
 import GitHubIcon from '@mui/icons-material/GitHub'
-import { Link, Typography } from "@mui/material"
-
+import { Link, Stack, Divider } from "@mui/material"
+const { file_storage, github, meonao } = require("../databases/config.json")
 
 export default function Footer() {
   return (
     <footer style={{ marginTop: "auto", marginBottom: "10px" }}>
-      <Typography variant="h6">X1Z53</Typography>
-      <Link target="_blank" href="https://github.com/X1Z53/site_mui">
-        <GitHubIcon />
-      </Link>
+      <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} justifyContent="center" spacing={1}>
+        <Link title="Partner" target="_blank" href={meonao}>
+          <img style={{ filter: "invert(80%)" }} height="25px" src={file_storage + "meonao.svg"} />
+        </Link>
+        <Link title="GitHub" target="_blank" href={github}>
+          <GitHubIcon />
+        </Link>
+      </Stack>
     </footer>
   )
 }

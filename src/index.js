@@ -1,14 +1,13 @@
 import React from "react"
-import { createRoot } from "react-dom/client"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { ThemeProvider, createTheme } from "@mui/material/styles"
+import { createRoot } from 'react-dom/client'
+import { useLocation, BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { Box, Container } from "@mui/material"
+import { green, red } from "@mui/material/colors"
+import { ThemeProvider, createTheme } from "@mui/material/styles"
 
-// Page Components
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 
-// Pages
 import Main from "./pages/Main"
 import Collection from "./pages/Collection"
 import TrumBlacklist from "./pages/TrumBlacklist"
@@ -17,28 +16,26 @@ import TrumAdmins from "./pages/TrumAdmins"
 import ImportSubstitution from "./pages/ImportSubstitution"
 import SnakeGame from "./pages/SnakeGame"
 
-// Plug
-import NotNow from "./components/NotNow"
-import { green, red } from "@mui/material/colors"
+import Plug from "./components/Plug"
 
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
     success: { main: green[900] },
-    error: { main: red[700] },
+    error: { main: red[900] },
   }
 })
 
-const App = () => {
+function App() {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <ThemeProvider theme={darkTheme}>
         <Router>
           <Header />
-          <Container component="main">
+          <Container component="main" sx={{ padding: "20px" }}>
             <Routes>
               <Route path="/" element={<Main />} />
-              <Route path="/*" element={<NotNow />} />
+              <Route path="/*" element={<Plug />} />
               <Route path="/collection" element={<Collection />} />
               <Route path="/trum_blacklist" element={<TrumBlacklist />} />
               <Route path="/trum_account_form" element={<TrumAccountForm />} />
@@ -54,4 +51,4 @@ const App = () => {
   )
 }
 
-createRoot(document.getElementById("root")).render(<App />)
+createRoot(document.getElementById('root')).render(<App />)
