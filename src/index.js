@@ -1,6 +1,6 @@
 import React from "react"
 import { createRoot } from 'react-dom/client'
-import { useLocation, BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { Box, Container } from "@mui/material"
 import { green, red } from "@mui/material/colors"
 import { ThemeProvider, createTheme } from "@mui/material/styles"
