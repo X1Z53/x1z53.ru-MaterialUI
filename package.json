@@ -10,6 +10,8 @@
     "@mui/lab": "^5.0.0-alpha.120",
     "@mui/material": "^5.11.9",
     "@yewyewxd/react-simple-snake": "^0.2.2",
+    "basic-ftp": "^5.0.2",
+    "fs": "^0.0.1-security",
     "html-react-parser": "^3.0.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

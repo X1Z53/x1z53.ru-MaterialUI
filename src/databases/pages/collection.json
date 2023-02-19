@@ -1,170 +1,34 @@
 {
-  "7-Zip": {
-    "type": "Installer",
-    "version": "22.01",
-    "file": "7-Zip Installer 22.01.exe",
-    "size": 1575742
-  },
-  "ASIO4ALL": {
-    "type": "Installer",
-    "version": "2.15",
-    "file": "ASIO4ALL Installer 2.15.exe",
-    "size": 317576
-  },
-  "Adobe Illustrator 2023": {
-    "type": "Installer",
-    "version": "27.0.0.602",
-    "file": "Adobe Illustrator 2023 Installer 27.0.0.602.zip",
-    "size": 1902075664
-  },
-  "Adobe Photoshop 2023": {
-    "type": "Installer",
-    "version": "24.0.0.59",
-    "file": "Adobe Photoshop 2023 Installer 24.0.0.59.zip",
-    "size": 3421344299
-  },
-  "Adobe Premiere Pro 2023": {
-    "type": "Installer",
-    "version": "23.0.0.63",
-    "file": "Adobe Premiere Pro 2023 Installer 23.0.0.63.zip",
-    "size": 1934992826
-  },
-  "CorelDRAW Graphics Suite 2022": {
-    "type": "Installer",
-    "version": "24.2.0.444",
-    "file": "CorelDRAW Graphics Suite 2022 Installer 24.2.0.444.zip",
-    "size": 1577156426
-  },
-  "Defender Control": {
-    "type": "Portable",
-    "version": "1.2",
-    "file": "Defender Control Portable 1.2.exe",
-    "size": 457984
-  },
-  "EVE Online": {
-    "type": "Installer",
-    "version": "20.09",
-    "file": "EVE Online Installer 20.09.exe",
-    "size": 92470632
-  },
-  "Google Drive": {
-    "type": "Installer",
-    "version": "66.0",
-    "file": "Google Drive Installer 66.0.exe",
-    "size": 309725464
-  },
-  "IconExtract": {
-    "type": "Portable",
-    "version": "1.47",
-    "file": "IconExtract Portable 1.47.exe",
-    "size": 27136
-  },
-  "KMSAuto Net": {
-    "type": "Portable",
-    "version": "1.5.4",
-    "file": "KMSAuto Net Portable 1.5.4.exe",
-    "size": 7509504
-  },
-  "MAudioPlugins": {
-    "type": "Installer",
-    "version": "16.01",
-    "file": "MAudioPlugins Installer 16.01.exe",
-    "size": 592547664
-  },
-  "MSEdgeRedirect": {
-    "type": "Portable",
-    "version": "0.7.2.0",
-    "file": "MSEdgeRedirect Portable 0.7.2.0.exe",
-    "size": 1131520
-  },
-  "Magix Vegas Pro": {
-    "type": "Installer",
-    "version": "20.0.0.214",
-    "file": "Magix Vegas Pro Installer 20.0.0.214.zip",
-    "size": 621493255
-  },
-  "Microsoft Office": {
-    "type": "Installer",
-    "version": "2016-2021",
-    "file": "Microsoft Office Installer 2016-2021.zip",
-    "size": 4357834165
-  },
-  "Microsoft Visual C++ 2015-2022": {
-    "type": "Installer",
-    "version": "14.34.31931.0",
-    "file": "Microsoft Visual C++ 2015-2022 Installer 14.34.31931.0.exe",
-    "size": 25466016
-  },
-  "Movavi Video Editor Plus": {
-    "type": "Installer",
-    "version": "22.4.1",
-    "file": "Movavi Video Editor Plus Installer 22.4.1.zip",
-    "size": 90845530
-  },
-  "Native Access": {
-    "type": "Installer",
-    "version": "2.7.0",
-    "file": "Native Access Installer 2.7.0.exe",
-    "size": 142842272
-  },
-  "Neovim": {
-    "type": "Installer",
-    "version": "0.8.0",
-    "file": "Neovim Installer 0.8.0.msi",
-    "size": 43991341
-  },
-  "NodeJS": {
-    "type": "Installer",
-    "version": "19.0.0",
-    "file": "NodeJS Installer 19.0.0.msi",
-    "size": 30519296
-  },
-  "Psiphon": {
-    "type": "Universal",
-    "version": "3.174",
-    "file": "Psiphon Universal 3.174.exe",
-    "size": 14605740
-  },
-  "QBittorrent": {
-    "type": "Installer",
-    "version": "4.4.5",
-    "file": "QBittorrent Installer 4.4.5.exe",
-    "size": 28396224
-  },
-  "REAPER": {
-    "type": "Installer",
-    "version": "6.68",
-    "file": "REAPER Installer 6.68.exe",
-    "size": 15305720
-  },
-  "TeraBox": {
-    "type": "Installer",
-    "version": "1.10.5.5",
-    "file": "TeraBox Installer 1.10.5.5.exe",
-    "size": 82376920
-  },
-  "The Sims 4": {
-    "type": "Installer",
-    "version": "1.91.186.1530",
-    "file": "The Sims 4 Installer 1.91.186.1530.zip",
-    "size": 36080386590
-  },
-  "VMware Workstation Pro": {
-    "type": "Installer",
-    "version": "17.0.0",
-    "file": "VMware Workstation Pro Installer 17.0.0.zip",
-    "size": 581029936
-  },
-  "WinSCP": {
-    "type": "Installer",
-    "version": "5.21.5",
-    "file": "WinSCP Installer 5.21.5.exe",
-    "size": 11471704
-  },
-  "Yandex Browser": {
-    "type": "Installer",
-    "version": "22.9.4",
-    "file": "Yandex Browser Installer 22.9.4.exe",
-    "size": 2321816
-  }
+    "7-Zip Installer 22.01.exe": "1.5 MB",
+    "ASIO4ALL Installer 2.15.exe": "310.1 KB",
+    "Adobe": {
+        "Adobe Illustrator 2023 Installer 27.0.0.602.zip": "1.8 GB",
+        "Adobe Photoshop 2023 Installer 24.0.0.59.zip": "3.2 GB",
+        "Adobe Premiere Pro 2023 Installer 23.0.0.63.zip": "1.8 GB"
+    },
+    "CorelDRAW Graphics Suite 2022 Installer 24.2.0.444.zip": "1.5 GB",
+    "Defender Control Portable 1.2.exe": "447.3 KB",
+    "EVE Online Installer 20.09.exe": "88.2 MB",
+    "Google Drive Installer 66.0.exe": "295.4 MB",
+    "IconExtract Portable 1.47.exe": "26.5 KB",
+    "KMSAuto Net Portable 1.5.4.exe": "7.2 MB",
+    "MAudioPlugins Installer 16.01.exe": "565.1 MB",
+    "MSEdgeRedirect Portable 0.7.2.0.exe": "1.1 MB",
+    "Magix Vegas Pro Installer 20.0.0.214.zip": "592.7 MB",
+    "Microsoft": {
+        "Microsoft Office Installer 2016-2021.zip": "4.1 GB",
+        "Microsoft Visual C++ 2015-2022 Installer 14.34.31931.0.exe": "24.3 MB"
+    },
+    "Movavi Video Editor Plus Installer 22.4.1.zip": "86.6 MB",
+    "Native Access Installer 2.7.0.exe": "136.2 MB",
+    "Neovim Installer 0.8.0.msi": "42.0 MB",
+    "NodeJS Installer 19.0.0.msi": "29.1 MB",
+    "Psiphon Universal 3.174.exe": "13.9 MB",
+    "QBittorrent Installer 4.4.5.exe": "27.1 MB",
+    "REAPER Installer 6.68.exe": "14.6 MB",
+    "TeraBox Installer 1.10.5.5.exe": "78.6 MB",
+    "The Sims 4 Installer 1.91.186.1530.zip": "33.6 GB",
+    "VMware Workstation Pro Installer 17.0.0.zip": "554.1 MB",
+    "WinSCP Installer 5.21.5.exe": "10.9 MB",
+    "Yandex Browser Installer 22.9.4.exe": "2.2 MB"
 }
