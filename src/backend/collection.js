@@ -52,8 +52,5 @@ async function scanFtpDirectory(directory, outputFile) {
     return result
 }
 
-
-
-
 const directory = "/3c3f5e3a-30e2-d801-3036-5e3a30e2d801/debian/root/assets/collection"
 scanFtpDirectory(directory, '../databases/pages/collection.json')
