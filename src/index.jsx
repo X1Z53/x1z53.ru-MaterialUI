@@ -16,18 +16,14 @@ const darkTheme = createTheme({
   }
 })
 
-function App() {
-  return (
-    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      <ThemeProvider theme={darkTheme}>
-        <Router>
-          <Header />
-          <Routes />
-          <Footer />
-        </Router>
-      </ThemeProvider>
-    </Box>
-  )
-}
-
-createRoot(document.getElementById('root')).render(<App />)
+createRoot(document.getElementById('root')).render(
+  <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+    <ThemeProvider theme={darkTheme}>
+      <Router>
+        <Header />
+        <Routes />
+        <Footer />
+      </Router>
+    </ThemeProvider>
+  </Box>
+)

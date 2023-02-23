@@ -3,7 +3,7 @@ import { Typography } from "@mui/material"
 
 import Views from "../components/Views"
 
-const { file_storage } = require("../databases/config.json")
+const { image_storage } = require("../databases/config.json")
 const database = require("../databases/trum_blacklist.json")
 
 const backgroundColors = Object.keys(database).map((name) =>
@@ -12,7 +12,7 @@ const backgroundColors = Object.keys(database).map((name) =>
 const headers = ["Имя", "Причина попадания в ЧС", "Количество банов", "Период бана"]
 const blacklist = Object.keys(database).map((name) => [
   <div>
-    <img height="100px" src={file_storage + "trum_blacklist/" + name + ".jpg"} alt={name} />
+    <img height="100px" src={image_storage + "trum_blacklist/" + name + ".jpg"} alt={name} />
     <Typography>{name}</Typography>
   </div>,
   database[name]["ban_reason"],
@@ -20,12 +20,4 @@ const blacklist = Object.keys(database).map((name) => [
   database[name]["ban_period"]
 ])
 
-export default function TrumBlacklist() {
-  return (
-    <Views
-      headers={headers}
-      database={blacklist}
-      backgroundColors={backgroundColors}
-    />
-  )
-}
+export default () => <Views headers={headers} database={blacklist} backgroundColors={backgroundColors} />

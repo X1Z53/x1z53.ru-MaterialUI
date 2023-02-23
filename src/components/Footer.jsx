@@ -2,13 +2,13 @@ import React from 'react'
 import { Link, Stack, Divider } from "@mui/material"
 import { GitHub } from '@mui/icons-material'
 
-const { file_storage, github, meonao } = require("../databases/config.json")
+const { image_storage, github, meonao } = require("../databases/config.json")
 
 export default () =>
   <footer style={{ marginTop: "auto", marginBottom: "10px" }}>
     <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} justifyContent="center" spacing={1}>
       <Link title="Partner" target="_blank" href={meonao}>
-        <img style={{ filter: "invert(80%)" }} height="25px" src={file_storage + "meonao.svg"} />
+        <img style={{ filter: "invert(80%)" }} height="25px" src={image_storage + "meonao.svg"} />
       </Link>
       <Link title="GitHub" target="_blank" href={github}>
         <GitHub />

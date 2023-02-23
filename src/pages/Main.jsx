@@ -26,18 +26,14 @@ const SectionCard = ({ section, charsToUpCase, description }) => (
   </Grid>
 );
 
-export default function Main() {
-  const sections = Object.keys(database).filter(section => section !== "main");
-  return (
-    <Grid container alignItems="center" spacing={3}>
-      {sections.map(section => (
-        <SectionCard
-          key={section}
-          section={section}
-          charsToUpCase={database[section]["charsToUpCase"]}
-          description={database[section]["description"]}
-        />
-      ))}
-    </Grid>
-  );
-}
+export default () =>
+  <Grid container justifyContent="center" spacing={3}>
+    {Object.keys(database).filter(section => section !== "main").map(section => (
+      <SectionCard
+        key={section}
+        section={section}
+        charsToUpCase={database[section]["charsToUpCase"]}
+        description={database[section]["description"]}
+      />
+    ))}
+  </Grid>

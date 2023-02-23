@@ -5,7 +5,7 @@ import { MenuRounded } from "@mui/icons-material"
 
 import Sidebar from "./Sidebar"
 
-const { file_storage } = require("../databases/config.json")
+const { image_storage } = require("../databases/config.json")
 
 export default () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -19,7 +19,7 @@ export default () => {
         <IconButton onClick={handleSidebarOpen} sx={{ position: "absolute" }}>
           <MenuRounded fontSize="large" sx={{ fill: "black" }} edge="start" />
         </IconButton>
-        <div style={{ flexGrow: 1 }}><NavLink to="/" width="auto"><img height="50px" src={file_storage + "logo.svg"} /></NavLink></div>
+        <div style={{ flexGrow: 1 }}><NavLink to="/" width="auto"><img height="50px" src={image_storage + "x1z53.svg"} /></NavLink></div>
       </Toolbar>
       <Drawer open={isSidebarOpen} onClose={handleSidebarClose}>
         <Box onClick={handleSidebarClose} onKeyDown={handleSidebarClose}>

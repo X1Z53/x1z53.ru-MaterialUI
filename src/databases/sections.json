@@ -1,7 +1,7 @@
 {
   "main": {"description": ""},
   "collection": {
-    "description": "Collection of a few Software|<img alt='Collection access' src='https://files.x1z53.ru/assets/collection_access.svg' />"
+    "description": "Collection of a few Software"
   },
   "import_substitution": {
     "description": "Russian? Come here to get a list of import-substituted software",
@@ -18,9 +18,5 @@
   "trum_admins": {
     "description": "List of those control the TRUM",
     "charsToUpCase": [0, 1, 2, 3, 5]
-  },
-  "trum_account_form": {
-    "description": "Wanna your own account in the TRUM? Come here and take it",
-    "charsToUpCase": [0, 1, 2, 3, 5, 13]
   }
 }
