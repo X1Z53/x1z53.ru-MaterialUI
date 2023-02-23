@@ -1,9 +1,10 @@
 import React, { useState } from "react"
 import { Box, Typography, Button, Collapse, TextField } from "@mui/material"
-import RegulationAndRules from "../components/RegulationAndRules"
 import emailjs from "@emailjs/browser"
 
-export default function TrumAccountForm() {
+import RegulationAndRules from "../components/RegulationAndRules"
+
+export default () => {
   const [open, setOpen] = useState(false)
   const [checked, setChecked] = useState(false)
 

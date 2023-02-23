@@ -1,5 +1,6 @@
 import React from 'react'
 import Snake from '@yewyewxd/react-simple-snake'
+
 import ModuleDemo from '../components/ModuleDemo'
 
 const pageWidth = document.documentElement.scrollWidth

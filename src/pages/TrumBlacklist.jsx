@@ -1,9 +1,10 @@
 import React from "react"
 import { Typography } from "@mui/material"
-import TableConstructor from "../components/TableConstructor"
+
+import Views from "../components/Views"
 
 const { file_storage } = require("../databases/config.json")
-const database = require("../databases/pages/trum_blacklist.json")
+const database = require("../databases/trum_blacklist.json")
 
 const backgroundColors = Object.keys(database).map((name) =>
   database[name]["is_banned"] ? "error.main" : "success.main"
@@ -21,9 +22,9 @@ const blacklist = Object.keys(database).map((name) => [
 
 export default function TrumBlacklist() {
   return (
-    <TableConstructor
+    <Views
       headers={headers}
-      rows={blacklist}
+      database={blacklist}
       backgroundColors={backgroundColors}
     />
   )

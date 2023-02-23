@@ -1,18 +1,9 @@
 import React, { useState } from "react"
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography,
-  Collapse,
-  Paper,
-  Box
+  Table, TableBody, TableCell, TableContainer, TableHead,
+  TableRow, Typography, Collapse, Paper, Box
 } from "@mui/material"
-import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded'
-import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded'
+import { ExpandMoreRounded, ExpandLessRounded } from '@mui/icons-material'
 import parse from "html-react-parser"
 
 const StyledTableRows = ({ isFolder, headersCount, row, rowId, backgroundColor }) => {
@@ -28,7 +19,7 @@ const StyledTableRows = ({ isFolder, headersCount, row, rowId, backgroundColor }
         </TableCell>
         <TableCell sx={{ borderBottom: "0" }} align="center">
           <Typography>
-            {isOpen ? <ExpandLessRoundedIcon /> : <ExpandMoreRoundedIcon />}
+            {isOpen ? <ExpandLessRounded /> : <ExpandMoreRounded />}
           </Typography>
         </TableCell>
       </TableRow>
@@ -42,7 +33,7 @@ const StyledTableRows = ({ isFolder, headersCount, row, rowId, backgroundColor }
                     isFolder={headersCount - 1 >= row.length}
                     headersCount={headersCount}
                     row={row}
-                    key={rowId}
+                    key={rowId + "_" + index}
                     backgroundColor={backgroundColor}
                   />
                 ))}
@@ -65,32 +56,30 @@ const StyledTableRows = ({ isFolder, headersCount, row, rowId, backgroundColor }
   )
 }
 
-const TableConstructor = ({ headers, rows, backgroundColors = [] }) => (
-  <TableContainer component={Paper}>
-    <Table size="small">
-      <TableHead>
-        <TableRow>
-          {headers.map((title) => (
-            <TableCell key={title}>
-              <Typography variant="h6">{title}</Typography>
-            </TableCell>
+export default ({ headers, rows, backgroundColors = [] }) =>
+  <Paper sx={{ borderRadius: "20px", overflow: "hidden" }} >
+    <TableContainer>
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            {headers.map((item) => (
+              <TableCell key={item}>
+                <Typography variant="h6" alignContent="center">{item}</Typography>
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row, index) => (
+            <StyledTableRows
+              isFolder={headers.length - 1 >= row.length}
+              headersCount={headers.length}
+              row={row}
+              key={index}
+              backgroundColor={backgroundColors[index]}
+            />
           ))}
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {rows.map((row, index) => (
-          <StyledTableRows
-            isFolder={headers.length - 1 >= row.length}
-            headersCount={headers.length}
-            row={row}
-            key={index}
-            backgroundColor={backgroundColors[index]}
-          />
-        ))}
-      </TableBody>
-    </Table>
-  </TableContainer>
-)
-
-
-export default TableConstructor
+        </TableBody>
+      </Table>
+    </TableContainer>
+  </Paper>

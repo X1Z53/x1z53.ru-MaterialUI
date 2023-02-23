@@ -1,8 +1,10 @@
 import React from "react";
 import { Card, CardContent, Typography, CardActionArea, Grid } from "@mui/material";
 import parse from "html-react-parser";
-import { formatString } from "../backend/functions";
 import { NavLink } from "react-router-dom";
+
+import { formatString } from "../backend/functions";
+
 const database = require("../databases/sections.json");
 
 const SectionCard = ({ section, charsToUpCase, description }) => (
@@ -27,7 +29,7 @@ const SectionCard = ({ section, charsToUpCase, description }) => (
 export default function Main() {
   const sections = Object.keys(database).filter(section => section !== "main");
   return (
-    <Grid container spacing={3}>
+    <Grid container alignItems="center" spacing={3}>
       {sections.map(section => (
         <SectionCard
           key={section}

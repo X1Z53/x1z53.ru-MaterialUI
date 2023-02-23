@@ -1,33 +1,25 @@
 import React from "react"
 import { IconButton, Link, Typography } from "@mui/material"
-import LinkIcon from "@mui/icons-material/Link"
-import TableConstructor from "../components/TableConstructor"
+import { DownloadRounded, Folder, Downloading, CloudDownload, InsertDriveFileRounded, Album, Save} from "@mui/icons-material"
 
-import DownloadRoundedIcon from "@mui/icons-material/DownloadRounded"
-import FolderIcon from "@mui/icons-material/Folder"
-import DownloadingIcon from "@mui/icons-material/Downloading"
-import CloudDownloadIcon from "@mui/icons-material/CloudDownload"
-import InsertDriveFileRoundedIcon from "@mui/icons-material/InsertDriveFileRounded"
-import AlbumIcon from "@mui/icons-material/Album"
-import SaveIcon from "@mui/icons-material/Save"
+import Views from "../components/Views"
 
 const { file_storage } = require("../databases/config.json")
-const database = require("../databases/pages/collection.json")
+const database = require("../databases/collection.json")
 
 const iconsStyles = { height: "40px", width: "auto" }
 const icons = {
-  Installer: <DownloadRoundedIcon />,
-  Portable: <FolderIcon />,
-  Universal: <DownloadingIcon />,
-  Netinstaller: <CloudDownloadIcon />,
-  Minimal: <InsertDriveFileRoundedIcon />,
-  Full: <AlbumIcon />,
-  Live: <SaveIcon />,
+  Installer: <DownloadRounded />,
+  Portable: <Folder />,
+  Universal: <Downloading />,
+  Netinstaller: <CloudDownload />,
+  Minimal: <InsertDriveFileRounded />,
+  Full: <Album />,
+  Live: <Save />,
 }
 
 
-const headers = ["Title", "Version", "Type", "Size", <LinkIcon sx={iconsStyles} />]
-
+const headers = ["Title", "Version", "Type", "Size", "Download"]
 
 function processArray(obj) {
   const result = []
@@ -62,10 +54,9 @@ function processArray(obj) {
       ])
     }
   }
+
   return result
 }
 
-const collection = processArray(database)
-console.log(collection)
-// collection prototype: [image, name, version, type, icon]
-export default () => <TableConstructor headers={headers} rows={collection} />
+// [image & title, version, type, size, download]
+export default () => <Views headers={headers} database={processArray(database)} />
