@@ -2,87 +2,44 @@
 <html lang="en">
 
 <head>
+  <!-- Base -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="yandex-verification" content="6bc7863d7ac66e2c" />
   <title>X1Z53</title>
   <link rel="icon" type="image/png" href="https://images.x1z53.ru/x1z53.svg" />
+
+  <!-- @mui -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
   <style>
+    /* Base */
     * {
       color: #e0e0e0;
       text-align: center;
-      font-size: medium;
       font-family: "Roboto";
     }
 
     body {
-      padding: 0;
       margin: 0;
       background-color: #121212;
-      overflow: overlay;
     }
 
-    ::-webkit-scrollbar {
-      width: 20px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background-color: transparent;
-    }
-
+    /* Custom scrollbar */
+    body {overflow: overlay}
+    ::-webkit-scrollbar {width: 20px}
+    ::-webkit-scrollbar-thumb:hover {background-color: #a8bbbf}
     ::-webkit-scrollbar-thumb {
       background-color: #d6dee1;
       border-radius: 20px;
       border: 6px solid transparent;
       background-clip: content-box;
     }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background-color: #a8bbbf;
-    }
   </style>
-
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-    (function (m, e, t, r, i, k, a) {
-      m[i] = m[i] || function () {
-        (m[i].a = m[i].a || []).push(arguments)
-      }
-      m[i].l = 1 * new Date()
-      for (var j = 0; j < document.scripts.length; j++) {
-        if (document.scripts[j].src === r) { return }
-      }
-      (k = e.createElement(t)),
-        (a = e.getElementsByTagName(t)[0]),
-        (k.async = 1),
-        (k.src = r),
-        a.parentNode.insertBefore(k, a)
-    })(
-      window,
-      document,
-      "script",
-      "https://mc.yandex.ru/metrika/tag.js",
-      "ym"
-    )
-
-    ym(91029235, "init", {
-      clickmap: true,
-      trackLinks: true,
-      accurateTrackBounce: true,
-      webvisor: true,
-    })
-  </script>
-  <noscript>
-    <div>
-      <img src="https://mc.yandex.ru/watch/91029235" style="position: absolute; left: -9999px" alt="" />
-    </div>
-  </noscript>
-  <!-- /Yandex.Metrika counter -->
 </head>
 
-<body id="root">
+<body>
+  <div id="root" />
 </body>
 
 </html>

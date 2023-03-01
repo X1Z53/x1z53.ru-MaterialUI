@@ -1,5 +1,11 @@
 import React from "react";
-import { Card, CardContent, Typography, CardActionArea, Grid } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  CardActionArea,
+  Grid,
+} from "@mui/material";
 import parse from "html-react-parser";
 import { NavLink } from "react-router-dom";
 
@@ -11,7 +17,7 @@ const SectionCard = ({ section, charsToUpCase, description }) => (
   <Grid item xs={12} sm={6} md={4}>
     <Card>
       <CardActionArea>
-        <NavLink to={"/" + section} style={{ textDecoration: 'none' }}>
+        <NavLink to={"/" + section} style={{ textDecoration: "none" }}>
           <CardContent>
             <Typography gutterBottom variant="h4">
               {formatString(section, charsToUpCase)}
@@ -26,14 +32,17 @@ const SectionCard = ({ section, charsToUpCase, description }) => (
   </Grid>
 );
 
-export default () =>
+export default () => (
   <Grid container justifyContent="center" spacing={3}>
-    {Object.keys(database).filter(section => section !== "main").map(section => (
-      <SectionCard
-        key={section}
-        section={section}
-        charsToUpCase={database[section]["charsToUpCase"]}
-        description={database[section]["description"]}
-      />
-    ))}
+    {Object.keys(database)
+      .filter((section) => section !== "main")
+      .map((section) => (
+        <SectionCard
+          key={section}
+          section={section}
+          charsToUpCase={database[section]["charsToUpCase"]}
+          description={database[section]["description"]}
+        />
+      ))}
   </Grid>
+);
