@@ -1,24 +1,17 @@
 {
   "name": "site-mui",
-  "main": "src/index.js",
   "homepage": "https://x1z53.ru",
   "dependencies": {
-    "@emailjs/browser": "^3.10.0",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.11",
-    "@mui/lab": "^5.0.0-alpha.121",
-    "@mui/material": "^5.11.11",
-    "@yewyewxd/react-simple-snake": "^0.2.2",
-    "basic-ftp": "^5.0.2",
-    "cheerio": "^1.0.0-rc.12",
-    "fs": "^0.0.1-security",
-    "html-react-parser": "^3.0.9",
+    "@mui/lab": "^5.0.0-alpha.122",
+    "@mui/material": "^5.11.12",
+    "html-react-parser": "^3.0.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.2",
-    "react-scripts": "^5.0.1",
-    "request": "^2.88.2"
+    "react-router-dom": "^6.9.0",
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -31,5 +24,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@types/react-dom": "^18.0.11"
+  }
 }

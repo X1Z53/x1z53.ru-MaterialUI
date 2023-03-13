@@ -1,21 +1,23 @@
-import React, { useState } from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography,
-  Collapse,
-  Paper,
-  Box,
-} from "@mui/material";
-import { ExpandMoreRounded, ExpandLessRounded } from "@mui/icons-material";
-import parse from "html-react-parser";
+import React, { useState } from "react"
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Collapse, Paper, Box } from "@mui/material"
+import { ExpandMoreRounded, ExpandLessRounded } from "@mui/icons-material"
+import parse from "html-react-parser"
 
-const StyledTableRows = ({ isFolder, headersCount, row, backgroundColor }) => {
-  const [isOpen, setIsOpen] = useState(false);
+type Props = {
+  headers: string[],
+  rows: any[],
+  backgroundColors?: string[]
+}
+
+type StyledTableRowsProps = {
+  isFolder: boolean,
+  headersCount: number,
+  row: any,
+  backgroundColor?: string
+}
+
+const StyledTableRows = ({ isFolder, headersCount, row, backgroundColor }: StyledTableRowsProps) => {
+  const [isOpen, setIsOpen] = useState(false)
 
   return isFolder ? (
     <>
@@ -50,7 +52,7 @@ const StyledTableRows = ({ isFolder, headersCount, row, backgroundColor }) => {
             <Box sx={{ margin: 1 }}>
               <Table>
                 <TableBody>
-                  {row[row.length - 1].map((row, index) => (
+                  {row[row.length - 1].map((row: any, index: number) => (
                     <StyledTableRows
                       isFolder={headersCount - 1 >= row.length}
                       headersCount={headersCount}
@@ -68,7 +70,7 @@ const StyledTableRows = ({ isFolder, headersCount, row, backgroundColor }) => {
     </>
   ) : (
     <TableRow sx={{ backgroundColor: backgroundColor || "" }}>
-      {row.map((item, itemIndex) => (
+      {row.map((item: any, itemIndex: number) => (
         <TableCell align="center" key={itemIndex}>
           {typeof item === "string" ? (
             <Typography>{parse(item.replace(/\|/g, "<br />"))}</Typography>
@@ -78,10 +80,10 @@ const StyledTableRows = ({ isFolder, headersCount, row, backgroundColor }) => {
         </TableCell>
       ))}
     </TableRow>
-  );
-};
+  )
+}
 
-export default ({ headers, rows, backgroundColors = [] }) => (
+export default ({ headers, rows, backgroundColors = [] }: Props) => (
   <Paper sx={{ borderRadius: "20px", overflow: "hidden" }}>
     <TableContainer>
       <Table size="small">
@@ -110,4 +112,4 @@ export default ({ headers, rows, backgroundColors = [] }) => (
       </Table>
     </TableContainer>
   </Paper>
-);
+)

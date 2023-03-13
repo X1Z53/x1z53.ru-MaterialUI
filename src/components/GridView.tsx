@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import {
   Divider,
   Stack,
@@ -6,12 +6,23 @@ import {
   Paper,
   Typography,
   Collapse,
-} from "@mui/material";
-import { ExpandMoreRounded, ExpandLessRounded } from "@mui/icons-material";
-import parse from "html-react-parser";
+} from "@mui/material"
+import { ExpandMoreRounded, ExpandLessRounded } from "@mui/icons-material"
+import parse from "html-react-parser"
 
-const GridTile = ({ isFolder, tile, backgroundColor }) => {
-  const [isOpen, setIsOpen] = useState(false);
+type GridTileProps = {
+  isFolder: boolean,
+  tile: any[],
+  backgroundColor: string
+}
+
+type Props = {
+  tiles: any[],
+  backgroundColors?: string[]
+}
+
+const GridTile = ({ isFolder, tile, backgroundColor }: GridTileProps) => {
+  const [isOpen, setIsOpen] = useState(false)
 
   return isFolder ? (
     <Grid position={"relative"} item>
@@ -55,10 +66,10 @@ const GridTile = ({ isFolder, tile, backgroundColor }) => {
             justifyContent="center"
             spacing={2}
           >
-            {tile[1].map((tile, index) => (
+            {tile[1].map((tile: any, index: number) => (
               <GridTile
                 key={index}
-                isFolder={tile.length <= 2}
+                isFolder={Object.keys(tile).length <= 2}
                 tile={tile}
                 backgroundColor={backgroundColor}
               />
@@ -89,17 +100,18 @@ const GridTile = ({ isFolder, tile, backgroundColor }) => {
         </Stack>
       </Paper>
     </Grid>
-  );
-};
-export default ({ tiles, backgroundColors = [] }) => (
+  )
+}
+
+export default ({ tiles, backgroundColors = [] }: Props) => (
   <Grid container alignItems="center" justifyContent="center" spacing={2}>
     {tiles.map((tile, index) => (
       <GridTile
         key={index}
-        isFolder={tile.length <= 2}
+        isFolder={Object.keys(tile).length <= 2}
         tile={tile}
         backgroundColor={backgroundColors[index]}
       />
     ))}
   </Grid>
-);
+)

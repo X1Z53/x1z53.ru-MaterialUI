@@ -1,21 +1,22 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { AppBar, Box, Drawer, IconButton, Toolbar } from "@mui/material";
-import { MenuRounded } from "@mui/icons-material";
+import React, { useState } from "react"
+import { NavLink } from "react-router-dom"
+import { AppBar, Box, Drawer, IconButton, Toolbar } from "@mui/material"
+import { MenuRounded } from "@mui/icons-material"
 
-import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar"
+import { getConfig } from "../functions"
 
-const { image_storage } = require("../databases/config.json");
+const image_storage = getConfig("image_storage")
 
 export default () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   const handleSidebarOpen = () => {
-    setIsSidebarOpen(true);
-  };
+    setIsSidebarOpen(true)
+  }
   const handleSidebarClose = () => {
-    setIsSidebarOpen(false);
-  };
+    setIsSidebarOpen(false)
+  }
 
   return (
     <AppBar position="sticky">
@@ -26,10 +27,10 @@ export default () => {
         }}
       >
         <IconButton onClick={handleSidebarOpen} sx={{ position: "absolute" }}>
-          <MenuRounded fontSize="large" sx={{ fill: "black" }} edge="start" />
+          <MenuRounded fontSize="large" sx={{ fill: "black" }} />
         </IconButton>
         <div style={{ flexGrow: 1 }}>
-          <NavLink to="/" width="auto">
+          <NavLink to="/" style={{ width: "auto" }} >
             <img height="50px" src={image_storage + "x1z53.svg"} />
           </NavLink>
         </div>
@@ -40,5 +41,5 @@ export default () => {
         </Box>
       </Drawer>
     </AppBar>
-  );
-};
+  )
+}

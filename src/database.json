@@ -1,0 +1,397 @@
+{
+    "type": "database",
+    "name": "database",
+    "objects": [
+        {
+            "type": "table",
+            "database": null,
+            "name": "collection",
+            "withoutRowId": true,
+            "strict": false,
+            "ddl": "CREATE TABLE collection (name TEXT NOT NULL UNIQUE PRIMARY KEY, type TEXT, version TEXT, file_type TEXT, size TEXT, folder TEXT) WITHOUT ROWID",
+            "columns": [
+                {
+                    "name": "name",
+                    "type": "TEXT",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY"
+                        }
+                    ]
+                },
+                {
+                    "name": "type",
+                    "type": "TEXT"
+                },
+                {
+                    "name": "version",
+                    "type": "TEXT"
+                },
+                {
+                    "name": "file_type",
+                    "type": "TEXT"
+                },
+                {
+                    "name": "size",
+                    "type": "TEXT"
+                },
+                {
+                    "name": "folder",
+                    "type": "TEXT"
+                }
+            ],
+            "rows": [
+                [
+                    "7-Zip",
+                    "Installer",
+                    "22.01",
+                    "exe",
+                    "1.5 MB",
+                    null
+                ],
+                [
+                    "ASIO4ALL",
+                    "Installer",
+                    "2.15",
+                    "exe",
+                    "310.1 KB",
+                    null
+                ],
+                [
+                    "Adobe Illustrator",
+                    "Installer",
+                    "27.0.0.602",
+                    "zip",
+                    "1.8 GB",
+                    "Adobe"
+                ],
+                [
+                    "Adobe Photoshop",
+                    "Installer",
+                    "24.0.0.59",
+                    "zip",
+                    "3.2 GB",
+                    "Adobe"
+                ],
+                [
+                    "Adobe Premiere Pro",
+                    "Installer",
+                    "23.0.0.63",
+                    "zip",
+                    "1.8 GB",
+                    "Adobe"
+                ],
+                [
+                    "CorelDRAW Graphics Suite",
+                    "Installer",
+                    "24.2.0.444",
+                    "zip",
+                    "1.5 GB",
+                    null
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "config",
+            "withoutRowId": true,
+            "strict": false,
+            "ddl": "CREATE TABLE config (name TEXT PRIMARY KEY UNIQUE NOT NULL, param TEXT NOT NULL) WITHOUT ROWID",
+            "columns": [
+                {
+                    "name": "name",
+                    "type": "TEXT",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "param",
+                    "type": "TEXT",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    "file_storage",
+                    "https:\/\/files.x1z53.ru\/"
+                ],
+                [
+                    "github",
+                    "https:\/\/github.com\/X1Z53\/site_miu"
+                ],
+                [
+                    "image_storage",
+                    "https:\/\/images.x1z53.ru\/"
+                ],
+                [
+                    "meonao",
+                    "https:\/\/meonao.com\/"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "sections",
+            "withoutRowId": true,
+            "strict": false,
+            "ddl": "CREATE TABLE sections (name TEXT PRIMARY KEY UNIQUE NOT NULL, description TEXT, chars_to_up_case TEXT) WITHOUT ROWID",
+            "columns": [
+                {
+                    "name": "name",
+                    "type": "TEXT",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "description",
+                    "type": "TEXT"
+                },
+                {
+                    "name": "chars_to_up_case",
+                    "type": "TEXT"
+                }
+            ],
+            "rows": [
+                [
+                    "collection",
+                    "Collection of a few Software",
+                    null
+                ],
+                [
+                    "import_substitution",
+                    "Russian? Come here to get a list of import-substituted software",
+                    "0,7"
+                ],
+                [
+                    "main",
+                    null,
+                    null
+                ],
+                [
+                    "trum_admins",
+                    "List of those control the TRUM",
+                    "0,1,2,3,5"
+                ],
+                [
+                    "trum_blacklist",
+                    "List of those who are prohibited from entering the TRUM",
+                    "0,1,2,3,5"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "trum_admins",
+            "withoutRowId": true,
+            "strict": false,
+            "ddl": "CREATE TABLE trum_admins (name TEXT PRIMARY KEY UNIQUE NOT NULL, duty_days TEXT, contacts TEXT) WITHOUT ROWID",
+            "columns": [
+                {
+                    "name": "name",
+                    "type": "TEXT",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "duty_days",
+                    "type": "TEXT"
+                },
+                {
+                    "name": "contacts",
+                    "type": "TEXT"
+                }
+            ],
+            "rows": [
+                [
+                    "Абраменко Ольга",
+                    "Вторник|Четверг",
+                    "vk.com\/holodny_piter"
+                ],
+                [
+                    "Аршанская Анастасия Юрьевна",
+                    "Четверг",
+                    "+7 (911) 944-03-84|vk.com\/a.arshanskaya"
+                ],
+                [
+                    "Ершова Ирина",
+                    "Вторник",
+                    "vk.com\/irinaersch"
+                ],
+                [
+                    "Леонидов Артём Иванович",
+                    "Вторник|Пятница",
+                    "+7 (951) 721-14-79|vk.com\/id57731851"
+                ],
+                [
+                    "Майер Глафира",
+                    "Пятница",
+                    "vk.com\/leemaier"
+                ],
+                [
+                    "Мозокина Елена Николаевна",
+                    "Понедельник",
+                    "+7 (921) 580-27-03|vk.com\/id69185621"
+                ],
+                [
+                    "Попкова Анна",
+                    "Пятница|Суббота",
+                    "vk.com\/ania_matis"
+                ],
+                [
+                    "Резван Мария",
+                    "Пятница",
+                    null
+                ],
+                [
+                    "Семёнова Татьяна Владимировна",
+                    "Среда",
+                    "+7 (911) 734-92-53|vk.com\/id503572834"
+                ],
+                [
+                    "Тарасова Ксения Георгиевна",
+                    "Суббота",
+                    "+7 (931) 262-45-12|vk.com\/idtaras_k"
+                ],
+                [
+                    "Чурикова Софья",
+                    "Понедельник",
+                    null
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "trum_blacklist",
+            "withoutRowId": true,
+            "strict": false,
+            "ddl": "CREATE TABLE trum_blacklist (name TEXT PRIMARY KEY UNIQUE NOT NULL, ban_reason TEXT, bans_count INTEGER, ban_period TEXT, is_banned INTEGER) WITHOUT ROWID",
+            "columns": [
+                {
+                    "name": "name",
+                    "type": "TEXT",
+                    "constraints": [
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE "
+                        },
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "ban_reason",
+                    "type": "TEXT"
+                },
+                {
+                    "name": "bans_count",
+                    "type": "INTEGER"
+                },
+                {
+                    "name": "ban_period",
+                    "type": "TEXT"
+                },
+                {
+                    "name": "is_banned",
+                    "type": "INTEGER"
+                }
+            ],
+            "rows": [
+                [
+                    "Антон Бадмаев",
+                    "Правила поведения в ТРЮМе, пункты 3 и 4|Устав коворкинга ТРЮМ, раздел \"Запрещается\", пункты 1 и 4|Устав коворкинга ТРЮМ, раздел \"Необходимо\", пункты 1, 2, 5 и 6",
+                    1,
+                    "До специального решения",
+                    1
+                ],
+                [
+                    "Георгий Саидов",
+                    "Правила поведения в ТРЮМе, пункты 3 и 4|Устав коворкинга ТРЮМ, раздел \"Запрещается\", пункты 1 и 4|Устав коворкинга ТРЮМ, раздел \"Необходимо\", пункты 1, 2, 5 и 6",
+                    1,
+                    "До 26.09.2022",
+                    0
+                ],
+                [
+                    "Дмитрий Кудинов-Танцоров",
+                    "Правила поведения в ТРЮМе, пункты 3 и 4|Устав коворкинга ТРЮМ, раздел \"Запрещается\", пункты 1 и 4|Устав коворкинга ТРЮМ, раздел \"Необходимо\", пункты 1, 2 и 6",
+                    3,
+                    "Навсегда",
+                    1
+                ],
+                [
+                    "Леонид Гордеев",
+                    "Правила поведения в ТРЮМе, пункты 3 и 4|Устав коворкинга ТРЮМ, раздел \"Запрещается\", пункты 1 и 4|Устав коворкинга ТРЮМ, раздел \"Необходимо\", пункты 1, 2 и 6",
+                    2,
+                    "Навсегда",
+                    1
+                ],
+                [
+                    "Николай Лыткин",
+                    "Правила поведения в ТРЮМе, пункты 3 и 4|Устав коворкинга ТРЮМ, раздел \"Запрещается\", пункты 1 и 4|Устав коворкинга ТРЮМ, раздел \"Необходимо\", пункты 1, 2 и 6",
+                    1,
+                    "До специального решения",
+                    1
+                ]
+            ]
+        }
+    ]
+}

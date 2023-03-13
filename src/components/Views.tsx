@@ -1,17 +1,19 @@
-import React, { useState } from "react";
-import { ToggleButton, ToggleButtonGroup, Toolbar } from "@mui/material";
-import { TableView, GridView } from "@mui/icons-material";
-import { TabContext, TabPanel } from "@mui/lab";
+import { useState } from "react"
+import { ToggleButton, ToggleButtonGroup, Toolbar } from "@mui/material"
+import { TableView, GridView } from "@mui/icons-material"
+import { TabContext, TabPanel } from "@mui/lab"
 
-import Table from "./TableView";
-import Grid from "./GridView";
+import Table from "./TableView"
+import Grid from "./GridView"
 
-export default ({ headers, database, backgroundColors }) => {
-  const [value, setValue] = useState("1");
+type Props = {
+  headers: string[],
+  database: Object[],
+  backgroundColors?: string[]
+}
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+export default ({ headers, database, backgroundColors=[] }: Props) => {
+  const [value, setValue] = useState("1")
 
   return (
     <TabContext value={value}>
@@ -20,7 +22,7 @@ export default ({ headers, database, backgroundColors }) => {
           size="small"
           value={value}
           exclusive
-          onChange={handleChange}
+          onChange={(event: any, newValue: string) => setValue(newValue)}
         >
           <ToggleButton value="1" sx={{ borderRadius: "10px" }}>
             <TableView fontSize="small" />
@@ -41,5 +43,5 @@ export default ({ headers, database, backgroundColors }) => {
         <Grid tiles={database} backgroundColors={backgroundColors} />
       </TabPanel>
     </TabContext>
-  );
-};
+  )
+}
