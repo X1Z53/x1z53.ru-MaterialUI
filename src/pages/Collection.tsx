@@ -38,6 +38,7 @@ for (const index in database) {
   }
 }
 
+// eslint-disable-next-line
 function configureCollection(programs: ProgramType[]): any[] {
   const result = []
 

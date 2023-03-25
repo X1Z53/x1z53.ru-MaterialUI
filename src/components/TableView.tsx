@@ -5,6 +5,7 @@ import { ExpandMoreRounded, ExpandLessRounded } from "@mui/icons-material"
 import { checkType, updateHTML } from "../hooks"
 import { DataView } from "../types"
 
+// eslint-disable-next-line
 function generateTableRow(isFolder: boolean, headersCount: number, row: any[], backgroundColor?: string): JSX.Element {
   const [isOpen, setIsOpen] = useState(false)
 

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 import { AppBar, Box, Drawer, IconButton, Toolbar } from "@mui/material"
 import { MenuRounded } from "@mui/icons-material"
 
-import { Sidebar } from './'
+import { Sidebar } from "./"
 import { getImage } from "../hooks"
 
 

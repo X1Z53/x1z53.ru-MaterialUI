@@ -21,11 +21,11 @@ export function getDatabase(tableName: string): { [key: string]: string }[] {
   const table = objects.find(item => item.name === tableName) as DatabaseType | undefined
   if (!table) return []
 
-  const keys = table.columns.map(key => key.name)
+  const keys = table.columns.map((key: {[name: string]: string}) => key.name)
   const values = table.rows
 
-  return values.map(row =>
-    keys.reduce((obj: { [key: string]: string }, key, index) => {
+  return values.map((row: string[]) =>
+    keys.reduce((obj: { [key: string]: string }, key: string, index: number) => {
       obj[key] = row[index]
       return obj
     }, {})
@@ -36,9 +36,10 @@ export function getDatabaseHeaders(tableName: string): string[] {
   const table = objects.find(item => item.name === tableName) as DatabaseType | undefined
   if (!table) return []
 
-  return table.columns.map(key => key.name)
+  return table.columns.map((key: {[name: string]: string}) => key.name)
 }
 
+// eslint-disable-next-line
 export function getConfig(paramName = ""): any {
   const database = getDatabase("config")
   const result: { [key: string]: string } = {}
@@ -58,6 +59,7 @@ export function getImage(fileName: string, folder = "", fileType = "svg") {
   return getURL([getConfig("image_storage"), folder, `${fileName}.${fileType}`])
 }
 
+// eslint-disable-next-line
 export function checkType(variable: any, type: string, func: Function, props: any[]): any {
   return typeof variable === type ? func(...props) : variable
 }
