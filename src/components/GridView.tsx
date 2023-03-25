@@ -1,27 +1,11 @@
 import React, { useState } from "react"
-import {
-  Divider,
-  Stack,
-  Grid,
-  Paper,
-  Typography,
-  Collapse,
-} from "@mui/material"
+import { Divider, Stack, Grid, Paper, Collapse } from "@mui/material"
 import { ExpandMoreRounded, ExpandLessRounded } from "@mui/icons-material"
-import parse from "html-react-parser"
 
-type GridTileProps = {
-  isFolder: boolean,
-  tile: any[],
-  backgroundColor: string
-}
+import { checkType, updateHTML } from "../hooks"
+import { DataView, GridTileProps } from "../types"
 
-type Props = {
-  tiles: any[],
-  backgroundColors?: string[]
-}
-
-const GridTile = ({ isFolder, tile, backgroundColor }: GridTileProps) => {
+function GridTile({ isFolder, tile, backgroundColor }: GridTileProps): JSX.Element {
   const [isOpen, setIsOpen] = useState(false)
 
   return isFolder ? (
@@ -40,11 +24,7 @@ const GridTile = ({ isFolder, tile, backgroundColor }: GridTileProps) => {
           divider={<Divider flexItem />}
           alignItems="center"
         >
-          {typeof tile[0] === "string" ? (
-            <Typography>{parse(tile[0].replace(/\|/g, "<br />"))}</Typography>
-          ) : (
-            tile[0]
-          )}
+          {checkType(tile[0], "string", updateHTML, [tile[0], "|", "<br>"])}
           {isOpen ? <ExpandLessRounded /> : <ExpandMoreRounded />}
         </Stack>
       </Paper>
@@ -66,7 +46,7 @@ const GridTile = ({ isFolder, tile, backgroundColor }: GridTileProps) => {
             justifyContent="center"
             spacing={2}
           >
-            {tile[1].map((tile: any, index: number) => (
+            {tile[1].map((tile: [], index: number) => (
               <GridTile
                 key={index}
                 isFolder={Object.keys(tile).length <= 2}
@@ -89,13 +69,7 @@ const GridTile = ({ isFolder, tile, backgroundColor }: GridTileProps) => {
           alignItems="center"
         >
           {tile.map((item, index) =>
-            typeof item === "string" ? (
-              <Typography key={index}>
-                {parse(item.replace(/\|/g, "<br />"))}
-              </Typography>
-            ) : (
-              item
-            )
+            <div key={index}>{checkType(item, "string", updateHTML, [item, "|", "<br>"])}</div>
           )}
         </Stack>
       </Paper>
@@ -103,9 +77,9 @@ const GridTile = ({ isFolder, tile, backgroundColor }: GridTileProps) => {
   )
 }
 
-export default ({ tiles, backgroundColors = [] }: Props) => (
-  <Grid container alignItems="center" justifyContent="center" spacing={2}>
-    {tiles.map((tile, index) => (
+export default function GridView({ database, backgroundColors = [] }: DataView) {
+  return <Grid container alignItems="center" justifyContent="center" spacing={2}>
+    {database.map((tile, index) => (
       <GridTile
         key={index}
         isFolder={Object.keys(tile).length <= 2}
@@ -114,4 +88,4 @@ export default ({ tiles, backgroundColors = [] }: Props) => (
       />
     ))}
   </Grid>
-)
+}

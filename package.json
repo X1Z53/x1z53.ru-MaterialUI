@@ -1,17 +1,20 @@
 {
-  "name": "site-mui",
+  "name": "x1z53.ru",
+  "version": "v3.1.0",
   "homepage": "https://x1z53.ru",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.11",
-    "@mui/lab": "^5.0.0-alpha.122",
-    "@mui/material": "^5.11.12",
-    "html-react-parser": "^3.0.12",
+    "@mui/lab": "^5.0.0-alpha.124",
+    "@mui/material": "^5.11.14",
+    "html-react-parser": "^3.0.14",
+    "node-xlsx": "^0.21.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.9.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "typescript": "^5.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -26,6 +29,11 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@types/react-dom": "^18.0.11"
+    "@types/node": "^18.15.9",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "eslint-plugin-react": "^7.32.2"
   }
 }

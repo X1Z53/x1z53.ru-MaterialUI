@@ -1,16 +1,17 @@
-import { ReactElement } from "react"
+import React from "react"
 import { IconButton, Typography } from "@mui/material"
-import { DownloadRounded, Folder, Downloading, CloudDownload, InsertDriveFileRounded, Album, Save, InsertEmoticon, } from "@mui/icons-material"
+import { DownloadRounded, Folder, Downloading, CloudDownload, InsertDriveFileRounded, Album, Save, Link } from "@mui/icons-material"
 
-import Views from "../components/Views"
-import { getConfig, getDatabase } from "../functions"
+import { Views } from "../components"
+import { getConfig, getDatabase, getImage, getURL } from "../hooks"
+import { ProgramType } from "../types"
 
 
 const database = getDatabase("collection")
-const { file_storage, image_storage } = getConfig()
+const { file_storage } = getConfig()
 
 const iconsStyles = { height: "40px" }
-const icons: { [key: string]: ReactElement } = {
+const icons: { [key: string]: JSX.Element } = {
   Installer: <DownloadRounded />,
   Portable: <Folder />,
   Universal: <Downloading />,
@@ -20,57 +21,62 @@ const icons: { [key: string]: ReactElement } = {
   Live: <Save />,
 }
 
-var programs: any = {}
+const programs: ProgramType[] = []
 
 for (const index in database) {
-  const program = database[index]
-  if (program.folder) {
-    if (!programs[program.folder]) {
-      programs[program.folder] = {}
-      programs[program.folder].name = program.folder
-      programs[program.folder].objects = []
-    }
-    programs[program.folder].objects.push(program)
+  const { name, folder, type, version, sources, file_type, size } = database[index]
+  const program = { name, folder, type, version, sources, file_type, size }
+
+  if (folder) {
+    const folderIndex = programs.map((program): string => program.name).indexOf(folder)
+
+    if (folderIndex === -1) programs.push({ name: folder, objects: [program] })
+    else programs[folderIndex].objects?.push(program)
+
   } else {
-    programs[program.name] = program
+    programs.push(program)
   }
 }
-function configureCollection(programs: []): [] {
-  const result: any = []
+
+function configureCollection(programs: ProgramType[]): any[] {
+  const result = []
 
   for (const index in programs) {
-    const { name, type, version, file_type, size, objects } = programs[index]
-    const url = file_storage + "collection/" + [name, type, version].join(' ') + '.' + file_type
+    const { name, type, version, file_type, size, sources, objects } = programs[index]
+    const url = getURL([file_storage, "collection", `${name} ${type} ${version}.${file_type}`])
 
-    if (!objects) {
-      result.push([
-        <div>
-          <img style={iconsStyles} src={image_storage + "collection/" + name + ".svg"} alt={name} />
+    result.push(
+      (!objects) ? [
+        <div key={"title"}>
+          <img style={iconsStyles} src={getImage(name, "collection")} alt={name} />
           <Typography>{name}</Typography>
         </div>,
         version,
         type,
         size,
-        <IconButton title={type} sx={iconsStyles} href={url}>{icons[type]}</IconButton>
-      ])
-    } else {
-      const subResult = configureCollection(objects)
-
-      result.push([
-        <Typography display="flex" flexDirection="column">
-          <img style={iconsStyles} src={image_storage + "collection/" + name + ".svg"} alt={name} />
+        <div key={"sources"}>
+          {sources?.split("|").map((source: string, index: number) =>
+            <IconButton key={index} title={source} sx={iconsStyles} target="_blank" href={source}><Link /></IconButton>
+          )}
+        </div>,
+        <IconButton key={"download"} title={type} sx={iconsStyles} href={url}>
+          {typeof type === "string" ? icons[type] : icons["Installer"]}
+        </IconButton>
+      ] : [
+        <Typography key={"folder"} display="flex" flexDirection="column">
+          <img style={iconsStyles} src={getImage(name, "collection")} alt={name} />
           {name}
         </Typography>,
-        subResult,
+        configureCollection(objects),
       ])
-    }
   }
 
   return result
 }
 
-// [image & title, version, type, size, download]
-export default () => <Views
-  headers={["Title", "Version", "Type", "Size", "Download"]}
-  database={configureCollection(programs)}
-/>
+export default function Collection() {
+  return <Views
+    headers={["Title", "Version", "Type", "Size", "Sources", "Download"]}
+    database={configureCollection(programs)}
+  />
+}

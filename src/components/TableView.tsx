@@ -1,22 +1,11 @@
 import React, { useState } from "react"
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Collapse, Paper, Box } from "@mui/material"
 import { ExpandMoreRounded, ExpandLessRounded } from "@mui/icons-material"
-import parse from "html-react-parser"
 
-type Props = {
-  headers: string[],
-  rows: any[],
-  backgroundColors?: string[]
-}
+import { checkType, updateHTML } from "../hooks"
+import { DataView } from "../types"
 
-type StyledTableRowsProps = {
-  isFolder: boolean,
-  headersCount: number,
-  row: any,
-  backgroundColor?: string
-}
-
-const StyledTableRows = ({ isFolder, headersCount, row, backgroundColor }: StyledTableRowsProps) => {
+function generateTableRow(isFolder: boolean, headersCount: number, row: any[], backgroundColor?: string): JSX.Element {
   const [isOpen, setIsOpen] = useState(false)
 
   return isFolder ? (
@@ -31,11 +20,7 @@ const StyledTableRows = ({ isFolder, headersCount, row, backgroundColor }: Style
           key={0}
           colSpan={headersCount - 1}
         >
-          {typeof row[0] === "string" ? (
-            <Typography>{parse(row[0].replace(/\|/g, "<br />"))}</Typography>
-          ) : (
-            row[0]
-          )}
+          {row[0]}
         </TableCell>
         <TableCell sx={{ borderBottom: "0" }} align="center">
           <Typography>
@@ -52,14 +37,8 @@ const StyledTableRows = ({ isFolder, headersCount, row, backgroundColor }: Style
             <Box sx={{ margin: 1 }}>
               <Table>
                 <TableBody>
-                  {row[row.length - 1].map((row: any, index: number) => (
-                    <StyledTableRows
-                      isFolder={headersCount - 1 >= row.length}
-                      headersCount={headersCount}
-                      row={row}
-                      key={index}
-                      backgroundColor={backgroundColor}
-                    />
+                  {row[row.length - 1].map((row: []) => (
+                    generateTableRow(headersCount - 1 >= row.length, headersCount, row, backgroundColor)
                   ))}
                 </TableBody>
               </Table>
@@ -70,46 +49,38 @@ const StyledTableRows = ({ isFolder, headersCount, row, backgroundColor }: Style
     </>
   ) : (
     <TableRow sx={{ backgroundColor: backgroundColor || "" }}>
-      {row.map((item: any, itemIndex: number) => (
+      {row.map((item: string, itemIndex: number) => (
         <TableCell align="center" key={itemIndex}>
-          {typeof item === "string" ? (
-            <Typography>{parse(item.replace(/\|/g, "<br />"))}</Typography>
-          ) : (
-            item
-          )}
+          {checkType(item, "string", updateHTML, [item, "|", "<br>"])}
         </TableCell>
       ))}
     </TableRow>
   )
 }
 
-export default ({ headers, rows, backgroundColors = [] }: Props) => (
-  <Paper sx={{ borderRadius: "20px", overflow: "hidden" }}>
-    <TableContainer>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            {headers.map((item) => (
-              <TableCell key={item}>
-                <Typography variant="h6" alignContent="center">
-                  {item}
-                </Typography>
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row, index) => (
-            <StyledTableRows
-              isFolder={headers.length - 1 >= row.length}
-              headersCount={headers.length}
-              row={row}
-              key={index}
-              backgroundColor={backgroundColors[index]}
-            />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  </Paper>
-)
+export default function TableView({ headers=[], database, backgroundColors = [] }: DataView): JSX.Element {
+  return (
+    <Paper sx={{ borderRadius: "20px" }}>
+      <TableContainer>
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              {headers.map((item) => (
+                <TableCell key={item}>
+                  <Typography variant="h6" alignContent="center">
+                    {item}
+                  </Typography>
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {database.map((row, index) =>
+              generateTableRow(headers.length - 1 >= row.length, headers.length, row, backgroundColors[index])
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Paper>
+  )
+}

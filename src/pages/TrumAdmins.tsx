@@ -1,16 +1,16 @@
+import React from "react"
 import { Typography } from "@mui/material"
-import { getConfig, getDatabase } from "../functions"
 
-import Views from "../components/Views"
+import { Views } from "../components"
+import { getDatabase, getImage } from "../hooks"
 
-const image_storage = getConfig("image_storage")
 const database = getDatabase("trum_admins")
 
-const admins = database.map(({name, duty_days, contacts}: any) => [
-  <div>
+const admins = database.map(({ name, duty_days, contacts }) => [
+  <div key={name}>
     <img
       style={{ height: "100px", width: "auto" }}
-      src={image_storage + "trum_admins/" + name + ".jpg"}
+      src={getImage(name, "trum_admins", "jpg")}
       alt={name}
     />
     <Typography>
@@ -21,4 +21,6 @@ const admins = database.map(({name, duty_days, contacts}: any) => [
   contacts
 ])
 
-export default () => <Views headers={["Фото", "Дни дежурства", "Контакты"]} database={admins} />
+export default function TrumAdmins() {
+  return <Views headers={["Фото", "Дни дежурства", "Контакты"]} database={admins} />
+}

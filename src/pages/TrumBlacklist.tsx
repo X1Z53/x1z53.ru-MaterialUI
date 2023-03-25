@@ -1,18 +1,16 @@
 import React from "react"
 import { Typography } from "@mui/material"
 
-import Views from "../components/Views"
-
-import { getDatabase, getConfig } from "../functions"
+import { Views } from "../components"
+import { getDatabase, getImage } from "../hooks"
 
 const database = getDatabase("trum_blacklist")
-const image_storage = getConfig("image_storage")
 
-const blacklist = database.map(({ name, ban_reason, bans_count, ban_period }: any) => [
-  <div>
+const blacklist = database.map(({ name, ban_reason, bans_count, ban_period }) => [
+  <div key={name}>
     <img
       height="100px"
-      src={image_storage + "trum_blacklist/" + name + ".jpg"}
+      src={getImage(name, "trum_blacklist", "jpg")}
       alt={name}
     />
     <Typography>{name}</Typography>
@@ -22,8 +20,10 @@ const blacklist = database.map(({ name, ban_reason, bans_count, ban_period }: an
   ban_period
 ])
 
-export default () => <Views
-  headers={["Имя", "Причина попадания в ЧС", "Количество банов", "Период бана"]}
-  database={blacklist}
-  backgroundColors={database.map(({ is_banned }: any) => Number(is_banned) ? "error.main" : "success.main")}
-/>
+export default function TrumBlacklist() {
+  return <Views
+    headers={["Имя", "Причина попадания в ЧС", "Количество банов", "Период бана"]}
+    database={blacklist}
+    backgroundColors={database.map(({ is_banned }) => Number(is_banned) ? "error.main" : "success.main")}
+  />
+}

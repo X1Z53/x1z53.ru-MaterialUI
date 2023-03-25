@@ -1,11 +1,10 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
 import { BrowserRouter as Router } from "react-router-dom"
-import { Box, ThemeProvider, createTheme } from "@mui/material"
+import { Box, ThemeProvider, createTheme, Container } from "@mui/material"
 import { green, red } from "@mui/material/colors"
-import Header from "./components/Header"
-import Routes from "./components/Routes"
-import Footer from "./components/Footer"
+
+import { Header, Routing, Footer } from "./components"
 
 const darkTheme = createTheme({
   palette: {
@@ -14,12 +13,15 @@ const darkTheme = createTheme({
     error: { main: red[900] }
   }
 })
+
 createRoot(document.getElementById("root") as HTMLElement).render(
   <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
     <ThemeProvider theme={darkTheme}>
       <Router>
         <Header />
-        <Routes />
+        <Container component="main" sx={{ padding: "20px" }}>
+          <Routing />
+        </Container>
         <Footer />
       </Router>
     </ThemeProvider>
