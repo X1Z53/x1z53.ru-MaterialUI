@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="-1927.545 -315.891 1024.002 1024" width="1024.002" height="1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient x1="511.61" y1="1026.9" x2="511.61" gradientUnits="userSpaceOnUse" y2="-.32419" id="l">
+      <stop id="stop6" offset="0" stop-color="#096fd2"/>
+      <stop id="stop8" offset="1" stop-color="#0e8ee9"/>
+    </linearGradient>
+    <linearGradient x1="412.95" y1="648.08" x2="412.86" gradientUnits="userSpaceOnUse" y2="376.45" id="k">
+      <stop id="stop11" offset="0" stop-color="#096fd2"/>
+      <stop id="stop13" offset="1" stop-color="#0e8ee9"/>
+    </linearGradient>
+  </defs>
+  <g id="g65" transform="matrix(1, 0, 0, 1, -1927.543579, -315.891022)">
+    <path id="path87" fill="url(#l)" class="cls-1" d="m917 0.00000513h-811.2a107.2 105.8 0 0 0 -105.8 106.3v811.4a107.2 105.8 0 0 0 106.4 106.3h811.2a107.2 105.8 0 0 0 106.4 -106.3v-811.4a107.2 105.8 0 0 0 -107 -106.3zm-405.4 935.4a426.2 420.6 0 0 1 -422.9 -423.4 426.2 420.6 0 0 1 422.9 -423.4 426.2 420.6 0 0 1 423.2 423.4 426.2 420.6 0 0 1 -423.2 423.4z"/>
+    <path id="path89" fill="url(#k)" class="cls-1" d="m904.2 512-293.5-135.7 23.58 86.95h-245.2l23.58-86.95-293.5 135.8 293.7 135.7-23.58-86.95h245.2l-23.58 86.95 293.3-135.7"/>
+  </g>
+</svg>

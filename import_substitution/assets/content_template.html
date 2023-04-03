@@ -1,0 +1,21 @@
+<a title="{{ source }}" href="{{ source }}">Source list</a>
+
+<div class="table_wrapper">
+    <table class="container table align-middle">
+        <thead>
+            {% for head in headers %}
+            <th>{{ head }}</th>
+            {% endfor %}
+        </thead>
+        <tbody>
+            {% for title, values in table.items() -%}
+                <tr>
+                    <td>{{ title }}</td>
+                    {% for value in values -%}
+                        <td>{{ '<br>'.join(value.split('|')) }}</td>
+                    {% endfor -%}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
