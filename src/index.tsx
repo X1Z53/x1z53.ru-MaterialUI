@@ -1,14 +1,14 @@
-import React from "react"
+import { Box, Container, createTheme, ThemeProvider } from "@mui/material"
+import { green, red } from "@mui/material/colors"
 import { createRoot } from "react-dom/client"
 import { BrowserRouter as Router } from "react-router-dom"
-import { Box, ThemeProvider, createTheme, Container } from "@mui/material"
-import { green, red } from "@mui/material/colors"
 
-import { Header, Routing, Footer } from "./components"
+import { Footer, Header, Routing } from "./components"
 
-const darkTheme = createTheme({
+const theme = createTheme({
   palette: {
     mode: "dark",
+    primary: { main: "#e0e0e0" },
     success: { main: green[900] },
     error: { main: red[900] }
   }
@@ -16,7 +16,7 @@ const darkTheme = createTheme({
 
 createRoot(document.getElementById("root") as HTMLElement).render(
   <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <Router>
         <Header />
         <Container component="main" sx={{ padding: "20px" }}>

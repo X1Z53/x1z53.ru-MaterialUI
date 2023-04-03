@@ -1,45 +1,50 @@
-type DataView = {
-  headers?: string[]
-  database: any[]
-  backgroundColors?: string[]
+type DatabaseType = {
+  name: string
+  columns: Record<string, string>[]
+  rows: string[][]
 }
 
-type SectionCard = {
+
+type SectionType = {
   section: string
   charsToUpCase: string
   description: string
 }
 
+type ViewType = {
+  headers?: string[]
+  database: any[]
+  backgroundColors?: string[]
+  caption?: string
+  url?: string
+  searchPlaces?: number[]
+  titleColumn?: number
+  haveFolders?: boolean
+  folderColumn?: number
+}
+
+type TableType = {
+  isFolder: boolean
+  headersCount: number
+  row: any
+  backgroundColor?: string
+}
+
+type GridType = {
+  isFolder: boolean
+  tile: string[][]
+  backgroundColor?: string
+}
 
 
-type DatabaseRow = {
+type ImportReplacementType = {
   name: string
   analogue: string
   registryNumber: string
   classes: string[]
 }
 
-
-
-type StyledTableRowsProps = {
-  isFolder: boolean
-  headersCount: number
-  row: any[]
-  backgroundColor?: string
-}
-
-type GridTileProps = {
-  isFolder: boolean
-  tile: any[]
-  backgroundColor: string
-}
-
-type DatabaseType = {
-  columns: { name: string }[]
-  rows: any[][]
-}
-
-type ProgramType = {
+type CollectionType = {
   name: string
   folder?: string
   type?: string
@@ -47,7 +52,8 @@ type ProgramType = {
   file_type?: string
   size?: string
   sources?: string
-  objects?: ProgramType[]
+  objects?: CollectionType[]
 }
 
-export type { SectionCard, StyledTableRowsProps, DatabaseRow, GridTileProps, DataView, DatabaseType, ProgramType }
+
+export type { CollectionType, DatabaseType, GridType, ImportReplacementType, SectionType, TableType, ViewType }

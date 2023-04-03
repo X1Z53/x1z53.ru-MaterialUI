@@ -1,7 +1,5 @@
-import React from "react"
-import { Routes, Route, Navigate } from "react-router-dom"
-
-import { Main, Collection, TrumBlacklist, TrumAdmins, ImportReplacement } from "../pages"
+import { Navigate, Route, Routes } from "react-router-dom"
+import { Collection, ImportReplacement, Main, TrumAdmins, TrumBlacklist } from "../pages"
 import { Plug } from "./"
 
 
@@ -18,7 +16,7 @@ const redirectRoutes = [
   { path: "/import_substitution", element: <Navigate to="/import_replacement" replace /> },
 ]
 
-export default function Routing(): JSX.Element {
+export default function Routing() {
   return (
     <Routes>
       {routes.map((route) => (

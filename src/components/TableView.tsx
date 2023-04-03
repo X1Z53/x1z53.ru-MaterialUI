@@ -1,19 +1,17 @@
-import React, { useState } from "react"
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Collapse, Paper, Box } from "@mui/material"
-import { ExpandMoreRounded, ExpandLessRounded } from "@mui/icons-material"
+import { ExpandLessRounded, ExpandMoreRounded } from "@mui/icons-material"
+import { Box, Collapse, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow as DefaultTableRow, Typography } from "@mui/material"
+import { updateHTML, useToggle } from "../hooks"
+import { ViewType, TableType } from "../types"
 
-import { checkType, updateHTML } from "../hooks"
-import { DataView } from "../types"
 
-// eslint-disable-next-line
-function generateTableRow(isFolder: boolean, headersCount: number, row: any[], backgroundColor?: string): JSX.Element {
-  const [isOpen, setIsOpen] = useState(false)
+const TableRow = ({ isFolder, headersCount, row, backgroundColor }: TableType) => {
+  const [isOpen, toggleOpen] = useToggle(false)
 
   return isFolder ? (
     <>
-      <TableRow
+      <DefaultTableRow
         sx={{ backgroundColor: backgroundColor, cursor: "pointer" }}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggleOpen}
       >
         <TableCell
           sx={{ borderBottom: "0" }}
@@ -28,8 +26,8 @@ function generateTableRow(isFolder: boolean, headersCount: number, row: any[], b
             {isOpen ? <ExpandLessRounded /> : <ExpandMoreRounded />}
           </Typography>
         </TableCell>
-      </TableRow>
-      <TableRow>
+      </DefaultTableRow>
+      <DefaultTableRow>
         <TableCell
           style={{ paddingBottom: 0, paddingTop: 0 }}
           colSpan={headersCount}
@@ -38,46 +36,59 @@ function generateTableRow(isFolder: boolean, headersCount: number, row: any[], b
             <Box sx={{ margin: 1 }}>
               <Table>
                 <TableBody>
-                  {row[row.length - 1].map((row: []) => (
-                    generateTableRow(headersCount - 1 >= row.length, headersCount, row, backgroundColor)
-                  ))}
+                  {row[row.length - 1].map((row: any, index: number) =>
+                    <TableRow
+                      key={index}
+                      headersCount={headersCount}
+                      isFolder={headersCount - 1 >= row.length}
+                      row={row}
+                      backgroundColor={backgroundColor}
+                    />
+                  )}
                 </TableBody>
               </Table>
             </Box>
           </Collapse>
         </TableCell>
-      </TableRow>
+      </DefaultTableRow>
     </>
   ) : (
-    <TableRow sx={{ backgroundColor: backgroundColor || "" }}>
-      {row.map((item: string, itemIndex: number) => (
-        <TableCell align="center" key={itemIndex}>
-          {checkType(item, "string", updateHTML, [item, "|", "<br>"])}
+    <DefaultTableRow sx={{ backgroundColor: backgroundColor || "" }}>
+      {row.map((item: string, index: number) => (
+        <TableCell align="center" key={index}>
+          {typeof item === "string" ? updateHTML(item, "|", "<br>") : item}
         </TableCell>
       ))}
-    </TableRow>
+    </DefaultTableRow>
   )
 }
 
-export default function TableView({ headers=[], database, backgroundColors = [] }: DataView): JSX.Element {
+export default function TableView({ headers = [], database, backgroundColors = [] }: ViewType) {
   return (
     <Paper sx={{ borderRadius: "20px" }}>
       <TableContainer>
         <Table size="small">
           <TableHead>
-            <TableRow>
-              {headers.map((item) => (
+            <DefaultTableRow>
+              {headers.map((item: any) => (
                 <TableCell key={item}>
                   <Typography variant="h6" alignContent="center">
                     {item}
                   </Typography>
                 </TableCell>
               ))}
-            </TableRow>
+            </DefaultTableRow>
           </TableHead>
           <TableBody>
-            {database.map((row, index) =>
-              generateTableRow(headers.length - 1 >= row.length, headers.length, row, backgroundColors[index])
+            {database.map((row: any, index) =>
+              <TableRow
+                key={index}
+                headersCount={headers.length}
+                isFolder={headers.length - 1 >= row.length}
+                row={row}
+                backgroundColor={backgroundColors[index]}
+              />
+
             )}
           </TableBody>
         </Table>

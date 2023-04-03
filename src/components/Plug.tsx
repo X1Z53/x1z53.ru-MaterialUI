@@ -1,5 +1,5 @@
-import React from "react"
 import { Typography } from "@mui/material"
+
 
 export default function Plug() {
   return <Typography variant="h3">

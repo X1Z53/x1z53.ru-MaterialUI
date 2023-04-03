@@ -1,12 +1,11 @@
-import React, { useState } from "react"
-import { Divider, Stack, Grid, Paper, Collapse } from "@mui/material"
-import { ExpandMoreRounded, ExpandLessRounded } from "@mui/icons-material"
+import { ExpandLessRounded, ExpandMoreRounded } from "@mui/icons-material"
+import { Collapse, Divider, Grid, ImageList, ImageListItem, Paper, Stack } from "@mui/material"
 
-import { checkType, updateHTML } from "../hooks"
-import { DataView, GridTileProps } from "../types"
+import { updateHTML, useToggle } from "../hooks"
+import { GridType, ViewType } from "../types"
 
-function GridTile({ isFolder, tile, backgroundColor }: GridTileProps): JSX.Element {
-  const [isOpen, setIsOpen] = useState(false)
+function GridTile({ isFolder, tile, backgroundColor }: GridType) {
+  const [isOpen, toggleOpen] = useToggle(false)
 
   return isFolder ? (
     <Grid position={"relative"} item>
@@ -17,14 +16,14 @@ function GridTile({ isFolder, tile, backgroundColor }: GridTileProps): JSX.Eleme
           backgroundColor: backgroundColor,
           cursor: "pointer",
         }}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggleOpen}
       >
         <Stack
           direction="column"
           divider={<Divider flexItem />}
           alignItems="center"
         >
-          {checkType(tile[0], "string", updateHTML, [tile[0], "|", "<br>"])}
+          {typeof tile[0] === "string" ? updateHTML(tile[0], "|", "<br>") : tile[0]}
           {isOpen ? <ExpandLessRounded /> : <ExpandMoreRounded />}
         </Stack>
       </Paper>
@@ -46,7 +45,7 @@ function GridTile({ isFolder, tile, backgroundColor }: GridTileProps): JSX.Eleme
             justifyContent="center"
             spacing={2}
           >
-            {tile[1].map((tile: [], index: number) => (
+            {tile[1].map((tile: any, index: number) => (
               <GridTile
                 key={index}
                 isFolder={Object.keys(tile).length <= 2}
@@ -69,7 +68,7 @@ function GridTile({ isFolder, tile, backgroundColor }: GridTileProps): JSX.Eleme
           alignItems="center"
         >
           {tile.map((item, index) =>
-            <div key={index}>{checkType(item, "string", updateHTML, [item, "|", "<br>"])}</div>
+            <div key={index}>{typeof item === "string" ? updateHTML(item, "|", "<br>") : item}</div>
           )}
         </Stack>
       </Paper>
@@ -77,7 +76,7 @@ function GridTile({ isFolder, tile, backgroundColor }: GridTileProps): JSX.Eleme
   )
 }
 
-export default function GridView({ database, backgroundColors = [] }: DataView) {
+export default function GridView({ database, backgroundColors = [] }: ViewType) {
   return <Grid container alignItems="center" justifyContent="center" spacing={2}>
     {database.map((tile, index) => (
       <GridTile

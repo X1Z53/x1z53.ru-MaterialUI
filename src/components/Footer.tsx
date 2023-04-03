@@ -1,12 +1,11 @@
-import React from "react"
-import { Link, Stack, Divider } from "@mui/material"
 import { GitHub } from "@mui/icons-material"
-
+import { Divider, Link, Stack } from "@mui/material"
 import { getConfig, getImage } from "../hooks"
+
+
 const { github, meonao } = getConfig()
 
-
-export default function Footer(): JSX.Element {
+export default function Footer() {
   return <footer style={{ marginTop: "auto", marginBottom: "10px" }}>
     <Stack
       direction="row"

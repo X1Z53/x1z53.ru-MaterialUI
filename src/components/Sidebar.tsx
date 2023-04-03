@@ -1,14 +1,13 @@
-import React from "react"
-import { Link } from "react-router-dom"
 import { List, ListItem, ListItemButton, ListItemText } from "@mui/material"
-
+import { Link } from "react-router-dom"
 import { formatString, getDatabase } from "../hooks"
+
 
 const database = getDatabase("sections")
 
-export default function Sidebar(): JSX.Element {
+export default function Sidebar() {
   return <List>
-    {database.map((section: {[key: string]: string}) => {
+    {database.map((section: Record<string, string>) => {
       const { name, description, chars_to_up_case } = section
       const path = `/${name === "main" ? "" : name}`
 

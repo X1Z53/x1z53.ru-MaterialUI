@@ -1,12 +1,13 @@
-import React from "react"
 import { Typography } from "@mui/material"
 import parse from "html-react-parser"
-import database from "./backend/database.json"
-
+import ky from "ky"
+import { useState } from "react"
 import { DatabaseType } from "./types"
-const { objects } = database
 
-export function formatString(inputString: string, charsToUpCase: string): string {
+const jsonDatabase: {objects: any} = await ky("https://files.x1z53.ru/test_database.json").json()
+const database = jsonDatabase.objects
+
+export function formatString(inputString: string, charsToUpCase: string) {
   const charIndexes = typeof charsToUpCase === "string" ? charsToUpCase.split(",").map(Number) : [0]
   const stringArr = inputString.replaceAll("_", " ").split("")
 
@@ -17,53 +18,58 @@ export function formatString(inputString: string, charsToUpCase: string): string
   return formattedString
 }
 
-export function getDatabase(tableName: string): { [key: string]: string }[] {
-  const table = objects.find(item => item.name === tableName) as DatabaseType | undefined
+export function useToggle(initialValue: any) {
+  const [value, setValue] = useState(initialValue)
+
+  const toggleValue = () => setValue(!value)
+
+  return [value, toggleValue]
+}
+
+export function useBooleanState(initialValue: any) {
+  const [value, setValue] = useState(initialValue)
+
+  const setTrue = () => setValue(true)
+  const setFalse = () => setValue(false)
+
+  return [value, setTrue, setFalse]
+}
+
+export function getDatabase(tableName: string) {
+  const table = database.find((item: any) => item.name === tableName) as DatabaseType | undefined
   if (!table) return []
 
-  const keys = table.columns.map((key: {[name: string]: string}) => key.name)
+  const keys = table.columns.map((key: Record<string, string>) => key.name)
   const values = table.rows
 
   return values.map((row: string[]) =>
-    keys.reduce((obj: { [key: string]: string }, key: string, index: number) => {
+    keys.reduce((obj: Record<string, string>, key: string, index: number) => {
       obj[key] = row[index]
       return obj
     }, {})
   )
 }
 
-export function getDatabaseHeaders(tableName: string): string[] {
-  const table = objects.find(item => item.name === tableName) as DatabaseType | undefined
-  if (!table) return []
-
-  return table.columns.map((key: {[name: string]: string}) => key.name)
-}
-
-// eslint-disable-next-line
-export function getConfig(paramName = ""): any {
+export function getConfig() {
   const database = getDatabase("config")
-  const result: { [key: string]: string } = {}
+  const result: Record<string, string> = {}
 
   database.forEach(({ name, param }) => {
     result[name] = param
   })
 
-  return paramName ? result[paramName] : result
+  return result
 }
 
-export function getURL(urlParts: string[]): string {
+export function getURL(urlParts: string[]) {
   return urlParts.filter(part => part !== "").join("/")
 }
 
 export function getImage(fileName: string, folder = "", fileType = "svg") {
-  return getURL([getConfig("image_storage"), folder, `${fileName}.${fileType}`])
+  const { image_storage } = getConfig()
+  return getURL([image_storage, folder, `${fileName}.${fileType}`])
 }
 
-// eslint-disable-next-line
-export function checkType(variable: any, type: string, func: Function, props: any[]): any {
-  return typeof variable === type ? func(...props) : variable
-}
-
-export function updateHTML(html: string, originalChar: string, updateChar: string): JSX.Element {
+export function updateHTML(html: string, originalChar: string, updateChar: string) {
   return <Typography>{parse(html.replaceAll(originalChar, updateChar))}</Typography>
 }

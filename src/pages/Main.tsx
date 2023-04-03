@@ -1,13 +1,12 @@
-import React from "react"
-import { Card, CardContent, Typography, CardActionArea, Grid } from "@mui/material"
+import { Card, CardActionArea, CardContent, Grid, Typography } from "@mui/material"
 import { NavLink } from "react-router-dom"
 
 import { formatString, getDatabase } from "../hooks"
-import { SectionCard } from "../types"
+import { SectionType } from "../types"
 
 const database = getDatabase("sections")
 
-const SectionCardElement = ({ section, charsToUpCase, description }: SectionCard ) => (
+const Section = ({ section, charsToUpCase, description }: SectionType ) => (
   <Grid item xs={12} sm={6} md={4}>
     <Card>
       <CardActionArea>
@@ -31,7 +30,7 @@ export default function Main() {
     <Grid container justifyContent="center" spacing={3}>
       {database
         .filter((section) => section.name !== "main")
-        .map((section) => <SectionCardElement
+        .map((section) => <Section
           key={section.name}
           section={section.name}
           charsToUpCase={section.chars_to_up_case}
