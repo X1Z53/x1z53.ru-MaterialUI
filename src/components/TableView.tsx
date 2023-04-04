@@ -19,7 +19,7 @@ const TableRow = ({ isFolder, headersCount, row, backgroundColor }: TableType) =
           key={0}
           colSpan={headersCount - 1}
         >
-          {row[0]}
+          <Typography>{row[0]}</Typography>
         </TableCell>
         <TableCell sx={{ borderBottom: "0" }} align="center">
           <Typography>
